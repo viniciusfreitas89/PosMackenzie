@@ -5,10 +5,10 @@ import java.util.List;
 import com.foursquare.android.nativeoauth.FoursquareOAuth;
 
 import br.com.mackenzie.admv.foursquare.FoursquareController;
-import br.com.mackenzie.admv.location.Coordenadas;
 import br.com.mackenzie.admv.location.Localizacao;
-import br.com.mackenzie.admv.location.Lugar;
 import br.com.mackenzie.admv.location.network.NetworkLocation;
+import br.com.mackenzie.admv.model.Coordenadas;
+import br.com.mackenzie.admv.model.Lugar;
 import br.com.mackenzie.admv.utils.AndroidUtils;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -87,7 +87,7 @@ public class MainActivity extends Activity {
     	      }
     	 });
     	
-//    	controller.limparDadosUsuario();
+    	controller.limparDadosUsuario();
     	atualizarBtnFoursquare();
     }
     

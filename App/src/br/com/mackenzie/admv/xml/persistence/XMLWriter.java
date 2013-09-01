@@ -1,10 +1,6 @@
 package br.com.mackenzie.admv.xml.persistence;
 
 import java.io.FileOutputStream;
-import java.lang.reflect.ParameterizedType;
-
-import br.com.mackenzie.admv.foursquare.xml.FoursquareData;
-import br.com.mackenzie.admv.utils.AndroidUtils;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;

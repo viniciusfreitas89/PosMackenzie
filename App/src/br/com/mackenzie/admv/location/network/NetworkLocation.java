@@ -3,9 +3,9 @@ package br.com.mackenzie.admv.location.network;
 import android.app.Activity;
 import android.content.Context;
 import android.location.LocationManager;
-import br.com.mackenzie.admv.location.Coordenadas;
 import br.com.mackenzie.admv.location.Localizacao;
 import br.com.mackenzie.admv.location.listener.LocationListenerExt;
+import br.com.mackenzie.admv.model.Coordenadas;
 import br.com.mackenzie.admv.utils.AndroidUtils;
 /**
  * 

@@ -1,4 +1,7 @@
 package br.com.mackenzie.admv.location;
+
+import br.com.mackenzie.admv.model.Coordenadas;
+
 /**
  * 
  * @author Vinicius
