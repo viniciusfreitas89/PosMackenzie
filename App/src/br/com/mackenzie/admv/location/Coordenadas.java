@@ -12,6 +12,11 @@ public class Coordenadas {
 	private double latitude = -23.55014;
 	private double longitude = -46.639924;
 	
+	@Override
+	public String toString(){
+		return this.latitude+","+this.longitude;
+	}
+	
 	public double getLatitude() {
 		return latitude;
 	}
