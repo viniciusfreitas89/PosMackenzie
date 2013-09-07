@@ -4,10 +4,18 @@
     <string name="app_name">App</string>
     <string name="action_settings">Settings</string>
     
-	<!-- Foursquare -->
-
+    <string name="carregando">Carregando...</string>
+    
+	<!-- FOURSQUARE -->
 	<string name="foursquare_nao_instalado">Para continuar o Foursquare deve ser instalado.</string>
 	<string name="foursquare_conexao_cancelada">Conexão com o foursquare cancelada.</string>
 	<string name="foursquare_conexao_negada">Conexão com o foursquare negada.</string>
 	<string name="foursquare_desatualizado">Por favor, antes de continuar atualize o aplicativo Foursquare.</string>
+	
+	<!-- 	LOGIN 	-->
+	<string name="hint_email">Informe seu e-mail de cadastro</string>
+	<string name="email">E-mail</string>
+	<string name="hint_login">Informe sua senha</string>
+    <string name="entrar_login">Entrar</string>
+    <string name="rodape_login">Todos os direitos reservados 2013 </string>
 </resources>

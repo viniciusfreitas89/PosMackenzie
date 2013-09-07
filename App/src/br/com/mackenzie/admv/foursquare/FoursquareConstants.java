@@ -10,7 +10,7 @@ public interface FoursquareConstants {
 	/******* URLs *******/
 	//https://developer.foursquare.com/docs/venues/explore
 	String 	URL_EXPLORE							= "https://api.foursquare.com/v2/venues/explore?ll=%1$s&oauth_token=%2$s&v="+version;
-	//https://developer.foursquare.com/docs/checkins/add
+	//https://developer.foursquare.com/docs/checkins/checkins
 	String URL_CHECKIN							= "https://api.foursquare.com/v2/checkins/%1$s?signature=%2$soauth_token=%3$s&v="+version;
 	//https://developer.foursquare.com/docs/venues/venues
 	String URL_VENUE_DETAIL						= "https://api.foursquare.com/v2/checkins/add?venueId=%1$s&oauth_token=%2$s&v="+version;

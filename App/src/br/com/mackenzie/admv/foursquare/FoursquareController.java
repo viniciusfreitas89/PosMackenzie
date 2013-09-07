@@ -41,15 +41,14 @@ public class FoursquareController implements FoursquareConstants{
 	static{
 		instance = new FoursquareController();
 	}
+	
 	private FoursquareController(){}
 
-	
 	public static FoursquareController getInstance(Activity activity){
 		if (pathXml == null){
 			pathXml = AndroidUtils.getDataDir(activity)+"/"+Usuario.class.getSimpleName()+".xml";
 			FoursquareController.activity = activity;
 		}
-		
 		return instance;
 	}
 	
@@ -68,7 +67,7 @@ public class FoursquareController implements FoursquareConstants{
 		ExplorerController controller = new ExplorerController();
 		User user = controller.user(json);
 		Usuario usuario = new Usuario();
-		usuario.setId(user.getId());
+		usuario.setTokenFoursquare(user.getId());
 		usuario.setNome(user.getFirstName());
 		usuario.setSobrenome(user.getLastName());
 		usuario.setSexo(user.getGender());

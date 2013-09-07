@@ -12,18 +12,28 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  */
 @XStreamAlias("Usuario")
 public class Usuario {
-	private String id;
+	private Integer id;
 	private String nome;
 	private String sobrenome;
+	private String email;
+	private String senha;
 	private String tokenFoursquare;
 	private String sexo;
 	private Date dataCadastro;
 	private List<Usuario> amigos;
 	
-	public String getId() {
+	public Usuario(){
+	}
+	
+	public Usuario(String email, String senha){
+		this.email = email;
+		this.senha = senha;
+	}
+	
+	public Integer getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getNome() {
@@ -37,6 +47,18 @@ public class Usuario {
 	}
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	public String getTokenFoursquare() {
 		return tokenFoursquare;
