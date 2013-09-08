@@ -22,7 +22,7 @@
         android:layout_marginRight="20dp"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:hint="@string/hint_email"
+        android:hint="@string/login_hint_email"
         android:layout_gravity="center_horizontal"
         android:singleLine="true"
         android:textColor="#ffffff"
@@ -35,7 +35,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/hint_login"
+        android:hint="@string/login_hint_senha"
         android:textColor="#ffffff"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
@@ -52,7 +52,7 @@
         android:background="#3567CD"
         android:textColor="#fff"
         android:layout_marginTop="30dp"
-        android:text="@string/entrar_login" />
+        android:text="@string/login_label_entrar" />
 
     <TextView
         android:id="@+id/textView1"
@@ -61,6 +61,6 @@
         android:layout_marginTop="50dp"
         android:textColor="#fff"
         android:textSize="15sp"
-        android:text="@string/rodape_login" />
+        android:text="@string/login_label_rodape" />
 
 </LinearLayout>

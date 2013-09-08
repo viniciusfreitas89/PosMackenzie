@@ -55,7 +55,7 @@ public class AndroidUtils {
         return dlDialog;
 	}
 	
-	public static boolean isOnline(ConnectivityManager conManager) {
+	public static boolean isConectadoNaInternet(ConnectivityManager conManager) {
         NetworkInfo netInfo = conManager.getActiveNetworkInfo();
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
             return true;
