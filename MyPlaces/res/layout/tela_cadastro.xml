@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#E8E8E8" >
+
+    <TextView
+        style="@style/cadastroText"
+        android:id="@+id/textView1"
+        android:gravity="center_horizontal"
+        android:text="@string/cadastro_hint_titulo" />
+
+    <TextView
+        style="@style/cadastroText"
+        android:id="@+id/textView2"
+        android:text="@string/cadastro_hint_nome" />
+
+    <EditText
+        android:id="@+id/txt_nome"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginLeft="@dimen/margin_vertical_1"
+        android:layout_marginRight="@dimen/margin_vertical_1"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        style="@style/cadastroText"
+        android:id="@+id/textView5"        
+        android:text="@string/cadastro_hint_senha" />
+
+    <EditText
+        style="@style/cadastroText"
+        android:id="@+id/txtPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_vertical_1"
+        android:layout_marginRight="@dimen/margin_vertical_1"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <TextView        
+        style="@style/cadastroText"
+        android:id="@+id/textView3"
+        android:text="@string/cadastro_hint_email" />
+
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"        
+        android:layout_marginLeft="@dimen/margin_vertical_1"
+        android:layout_marginRight="@dimen/margin_vertical_1"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp" >
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cadastro_hint_sexo" />
+
+
+        <RadioGroup
+            android:id="@+id/radioSexo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp" >
+
+            <RadioButton
+                android:id="@+id/radio0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/cadastro_hint_masculino" />
+
+            <RadioButton
+                android:id="@+id/radio1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cadastro_hint_feminino" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_criar_conta"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/margin_vertical_1"
+        android:layout_marginRight="@dimen/margin_vertical_1"
+        android:background="@drawable/seletor_button_style1"
+        android:text="@string/cadastro_hint_btn_criar" />
+
+    <Button
+        android:id="@+id/bnt_voltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/cadastro_hint_btn_voltar" />
+
+
+</LinearLayout>

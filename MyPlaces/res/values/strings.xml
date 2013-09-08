@@ -13,9 +13,26 @@
 	<string name="foursquare_desatualizado">Por favor, antes de continuar atualize o aplicativo Foursquare.</string>
 	
 	<!-- 	LOGIN 	-->
+	<string name="login_hint_logotipo">Logotipo tela login</string>
 	<string name="login_hint_email">Informe seu e-mail de cadastro</string>
 	<string name="login_hint_senha">Informe sua senha</string>
     <string name="login_label_entrar">Entrar</string>
-    <string name="login_label_rodape">Todos os direitos reservados 2013 </string>
+    <string name="login_label_cadastro">Cadastre-se</string>
+    <string name="login_label_rodape">Ao se cadastrar, você concorda com os termos de uso de serviço e Política de Privacidade.\n Todos os direitos reservados 2013 </string>
     <string name="login_mensagem_erro_atenticacao">Nome de usuário incorreto ou senha incorreta.</string>
+    
+    <!--  CADASTRO  -->
+    <string name="cadastro_hint_titulo">Criar conta no MyPlaces</string>
+    <string name="cadastro_hint_nome">Nome</string>
+    <string name="cadastro_hint_email">E-mail</string>
+	<string name="cadastro_hint_senha">Senha</string>
+	<string name="cadastro_hint_sexo">Sexo</string>
+	<string name="cadastro_hint_masculino">Masculino</string>
+	<string name="cadastro_hint_feminino">Feminino</string>
+	<string name="cadastro_hint_btn_criar">Criar conta</string>
+	<string name="cadastro_hint_btn_voltar">Voltar</string>
+	
+	
+	
+    
 </resources>
