@@ -38,6 +38,15 @@
             android:noHistory="true"
             android:label="@string/app_name"/>
         
+        <!--  Checkin Activity -->
+        <activity android:name="br.mackenzie.myplaces.CheckinActivity" />
+        
+        <!--  Profile Activity -->
+        <activity android:name="br.mackenzie.myplaces.ProfileActivity" />
+        
+        <!--  Feed Checkin Activity -->
+        <activity android:name="br.mackenzie.myplaces.FeedCheckinActivity" />
+        
     </application>
     
     
