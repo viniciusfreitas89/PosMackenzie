@@ -37,4 +37,29 @@ class Controller_Usuarios extends Controller {
         
         echo json_encode($ret);
     }
+    
+    public function action_cadastrar(){
+        $this->_auto_render = false;
+        
+        $ret            = new stdClass();
+        $ret->status    = false;
+        
+        if($this->request->method() == 'POST'){
+            $nome       = trim($this->request->post("nome"));
+            $email      = trim($this->request->post("email"));
+            $senha      = trim($this->request->post("senha"));
+            $c_senha    = trim($this->request->post("c_senha"));
+            
+            if($senha != $c_senha){
+                $ret->msg = "O campo senha e conformar senha devem ser idênticos!";
+            }else{
+                $mdUsuarios = new Model_Usuarios();
+                $ret        = $mdUsuarios->salvarUsuario($nome, $email, $senha);
+            }
+        }else{
+            $ret->msg = "Requisição post não encontrada";
+        }
+        
+        echo json_encode($ret);
+    }
 }
