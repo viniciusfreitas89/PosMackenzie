@@ -62,4 +62,24 @@ class Controller_Usuarios extends Controller {
         
         echo json_encode($ret);
     }
+    
+    public function action_efetuarCheckin(){
+        $this->_auto_render = false;
+        
+        $ret            = new stdClass();
+        $ret->status    = false;
+        
+        if($this->request->method() == 'POST'){
+            $mdUsuarios = new Model_Usuarios();
+            $ret        = $mdUsuarios->efetuarCheckin(array(
+                "id_usuario"    => $this->request->post("id"),
+                "id_local"      => $this->request->post("id_local"),
+                "valor_gasto"   => $this->request->post("valor_gasto"),
+            ));
+        }else{
+            $ret->msg = "Requisição post não encontrada";
+        }
+        
+        echo json_encode($ret);
+    }
 }
