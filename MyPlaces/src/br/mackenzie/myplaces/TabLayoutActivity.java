@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
-import br.com.mackenzie.admv.R;
+import br.mackenzie.myplaces.R;
 
 public class TabLayoutActivity  extends TabActivity {
     /** Called when the activity is first created. */

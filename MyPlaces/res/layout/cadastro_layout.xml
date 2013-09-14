@@ -10,12 +10,30 @@
         style="@style/cadastroText"
         android:id="@+id/textView1"
         android:gravity="center_horizontal"
-        android:text="@string/cadastro_hint_titulo" />
+        android:text="@string/cadastro_label_titulo" />
 
+    <TextView        
+        style="@style/cadastroText"
+        android:id="@+id/textView3"
+        android:text="@string/cadastro_label_email" />
+
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"        
+        android:layout_marginLeft="@dimen/margin_vertical_1"
+        android:layout_marginRight="@dimen/margin_vertical_1"
+        android:ems="10"
+        android:inputType="textEmailAddress" >
+         <requestFocus />
+         
+     </EditText>
+    
     <TextView
         style="@style/cadastroText"
         android:id="@+id/textView2"
-        android:text="@string/cadastro_hint_nome" />
+        android:text="@string/cadastro_label_nome" />
 
     <EditText
         android:id="@+id/txt_nome"
@@ -26,13 +44,13 @@
         android:layout_marginRight="@dimen/margin_vertical_1"
         android:inputType="textPersonName" >
 
-        <requestFocus />
+       
     </EditText>
 
     <TextView
         style="@style/cadastroText"
         android:id="@+id/textView5"        
-        android:text="@string/cadastro_hint_senha" />
+        android:text="@string/cadastro_label_senha" />
 
     <EditText
         style="@style/cadastroText"
@@ -43,21 +61,22 @@
         android:layout_marginRight="@dimen/margin_vertical_1"
         android:ems="10"
         android:inputType="textPassword" />
-
-    <TextView        
+    
+    
+    <TextView
         style="@style/cadastroText"
-        android:id="@+id/textView3"
-        android:text="@string/cadastro_hint_email" />
+        android:id="@+id/textView6"        
+        android:text="@string/cadastro_label_confirmar_senha" />
 
     <EditText
-        android:id="@+id/txtEmail"
+        style="@style/cadastroText"
+        android:id="@+id/txtRepeatPassword"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"        
         android:layout_marginLeft="@dimen/margin_vertical_1"
         android:layout_marginRight="@dimen/margin_vertical_1"
         android:ems="10"
-        android:inputType="textEmailAddress" />
+        android:inputType="textPassword" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -69,7 +88,7 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cadastro_hint_sexo" />
+            android:text="@string/cadastro_label_sexo" />
 
 
         <RadioGroup
@@ -83,13 +102,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="@string/cadastro_hint_masculino" />
+                android:text="@string/cadastro_label_masculino" />
 
             <RadioButton
                 android:id="@+id/radio1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cadastro_hint_feminino" />
+                android:text="@string/cadastro_label_feminino" />
 
         </RadioGroup>
 
@@ -103,14 +122,14 @@
         android:layout_marginLeft="@dimen/margin_vertical_1"
         android:layout_marginRight="@dimen/margin_vertical_1"
         android:background="@drawable/seletor_button_style1"
-        android:text="@string/cadastro_hint_btn_criar" />
+        android:text="@string/cadastro_label_btn_criar" />
 
     <Button
         android:id="@+id/bnt_voltar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/cadastro_hint_btn_voltar" />
+        android:text="@string/cadastro_label_btn_voltar" />
 
 
 </LinearLayout>
