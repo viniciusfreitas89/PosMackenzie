@@ -82,4 +82,34 @@ class Controller_Usuarios extends Controller {
         
         echo json_encode($ret);
     }
+    
+    public function action_carregarTimeLine(){
+        $this->_auto_render = false;
+        
+        $ret            = new stdClass();
+        $ret->status    = false;
+        
+        if($this->request->method() == 'POST'){
+            $mdUsuarios = new Model_Usuarios();
+            $rs         = $mdUsuarios->carregarTimeLine($this->request->post("id"));
+            
+            if($rs->count() <= 0){
+                $ret->msg = "Nenhum checkin encontrado";
+            }else{
+                $arrRet = array();
+                
+                foreach ($rs as $row){
+                    $arrRet[] = array(
+                        "local"         => $row->local,
+                        "valor_gasto"   => $row->valor_gasto,
+                        "data_registro" => $row->data_registro
+                    );
+                }
+            }
+        }else{
+            $ret->msg = "Requisição post não encontrada";
+        }
+        
+        echo json_encode($ret);
+    }
 }

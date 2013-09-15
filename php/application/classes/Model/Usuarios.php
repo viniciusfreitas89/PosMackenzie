@@ -40,35 +40,54 @@ class Model_Usuarios extends ORM {
     }
     
     public function efetuarCheckin($arrDados){
+        $tbCheckin                  = ORM::factory("checkin");
+        $tbCheckin->id_usuario      = $arrDados['id_usuario'];
+        $tbCheckin->id_local        = $arrDados['id_usuario'];
+        $tbCheckin->valor_gasto     = $arrDados['valor_gasto'];
+        $tbCheckin->data_registro   = date("Y-m-d H:i:s");
+        
+        $this->save();
+        
         $ret            = new stdClass();
-        $ret->status    = false;
-        
-        $tbCheckin              = ORM::factory("checkin");
-        $tbCheckin->id_usuario  = $arrDados['id_usuario'];
-        $tbCheckin->id_usuario = $arrDados['id_usuario'];
-        $tbCheckin->id_usuario = $arrDados['id_usuario'];
-        $tbCheckin->id_usuario = $arrDados['id_usuario'];
-        $tbCheckin->id_usuario = $arrDados['id_usuario'];
-        
-        
-        $this->where("email", "=", $email)
-             ->find();
-        
-        if($this->loaded()){
-            $ret->msg = "Esse e-mail já possui cadastro";
-        }else{
-            $this->nome             = $nome;
-            $this->email            = $email;
-            $this->senha            = $senha;
-            $this->data_registro    = date("Y-m-d H:i:s");
-            
-            $this->save();
-            
-            $ret->status    = true;
-            $ret->msg       = "Usuário cadastrado com Sucesso!";
-        }
+        $ret->status    = true;
+        $ret->msg       = "Chechin efetuado com Sucesso!";
         
         return $ret;
+    }
+    
+    public function carregarTimeLine($id_usuario){
+        $sql = "SELECT * FROM
+                (
+                    (
+                        SELECT 
+                            l.nome as 'local',
+                            ck.data_registro,
+                            ck.valor_gasto
+                        FROM
+                            checkin ck
+                        INNER JOIN
+                            locais l ON l.id - ck.id_local
+                        WHERE
+                            id_usuario = {$id_usuario}
+                    )
+                    UNION
+                    (
+                        SELECT 
+                            l.nome as 'local',
+                            ck.data_registro,
+                            ck.valor_gasto
+                        FROM
+                            checkin ck
+                        INNER JOIN
+                            locais l ON l.id - ck.id_local
+                        WHERE
+                            id_usuario IN(SELECT id_amigo FROM usuario_amigos WHERE id_usuario = {$id_usuario})
+                    )
+                ) U
+                ORDER BY U.data_registro DESC
+                ;";
+                            
+        return DB::query(Database::SELECT, $sql)->execute();
     }
 }
 
