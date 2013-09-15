@@ -1,12 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+
 <LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent">
   
-  <TextView android:text="Checkin"
-  			android:padding="15dp"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  
+  <!-- CADASTRO NOVO LUGAR -->
+  <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#686868"
+    android:padding="10dp" >
+ 
+  	  <TextView android:text="@string/checkin_cadastro_local"
   			android:layout_width="fill_parent"
-  			android:layout_height="wrap_content"/>
+  			android:layout_height="wrap_content"
+  			android:textColor="#CCCCCC" />
+  	  <EditText
+          android:id="@+id/editText1"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"          
+          android:ems="10" >
+
+          <requestFocus />
+      </EditText>
+      
+  </LinearLayout>
+  <!-- CADASTRO NOVO LUGAR -->
+  			
+      <!-- LISTA DE LUGAR -->
+      <LinearLayout
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical"
+    	android:background="#FFFFFF" >
+
+          <ListView
+              android:id="@+id/listView1"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" >
+          </ListView>
+
+      </LinearLayout>  
+  	  <!-- LISTA DE LUGAR -->
+
+  <!-- VALOR GASTO E BOTÃO CHECKIN -->
+  <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="bottom"
+    android:background="#CCCCCC"
+    android:padding="10dp"
+    android:layout_marginBottom="-4dp" >
+
+  <TextView android:text="@string/checkin_gasto_local"
+  			android:layout_width="fill_parent"
+  			android:layout_height="wrap_content"/>  	
+  	
+  	<EditText
+  	    android:id="@+id/editText2"
+  	    android:layout_width="fill_parent"
+  	    android:layout_height="wrap_content"
+  	    android:ems="10"
+  	    android:inputType="numberDecimal" />
+
+  	<Button
+  	    android:id="@+id/button1"
+  	    android:layout_width="fill_parent"
+  	    android:layout_height="wrap_content"
+  	    android:text="@string/checkin_button_fazer" />
+
+  </LinearLayout>
+  <!-- VALOR GASTO E BOTÃO CHECKIN -->
+  			
 </LinearLayout>
+</ScrollView>
+

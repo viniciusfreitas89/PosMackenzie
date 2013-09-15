@@ -4,9 +4,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-  <TextView android:text="Feed friends"
+  <TextView android:text="@string/feedcheckin_title"
   			android:padding="15dp"
   			android:layout_width="fill_parent"
   			android:layout_height="wrap_content"/>
+  
+  <!-- Main ListView 
+		 Always give id value as list(@android:id/list)
+	-->
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
     
 </LinearLayout>
