@@ -39,22 +39,6 @@ class Model_Usuarios extends ORM {
         return $ret;
     }
     
-    public function efetuarCheckin($arrDados){
-        $tbCheckin                  = ORM::factory("checkin");
-        $tbCheckin->id_usuario      = $arrDados['id_usuario'];
-        $tbCheckin->id_local        = $arrDados['id_usuario'];
-        $tbCheckin->valor_gasto     = $arrDados['valor_gasto'];
-        $tbCheckin->data_registro   = date("Y-m-d H:i:s");
-        
-        $this->save();
-        
-        $ret            = new stdClass();
-        $ret->status    = true;
-        $ret->msg       = "Chechin efetuado com Sucesso!";
-        
-        return $ret;
-    }
-    
     public function carregarTimeLine($id_usuario){
         $sql = "SELECT * FROM
                 (

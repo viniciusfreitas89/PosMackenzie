@@ -70,8 +70,8 @@ class Controller_Usuarios extends Controller {
         $ret->status    = false;
         
         if($this->request->method() == 'POST'){
-            $mdUsuarios = new Model_Usuarios();
-            $ret        = $mdUsuarios->efetuarCheckin(array(
+            $mdCheckin = new Model_Checkin();
+            $ret       = $mdCheckin->efetuarCheckin(array(
                 "id_usuario"    => $this->request->post("id"),
                 "id_local"      => $this->request->post("id_local"),
                 "valor_gasto"   => $this->request->post("valor_gasto"),
