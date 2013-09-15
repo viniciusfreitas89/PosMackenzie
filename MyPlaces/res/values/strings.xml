@@ -35,4 +35,6 @@
 	<string name="cadastro_msg_senha_nao_confere">As senhas não conferem. Por favor, digite novamente.</string>
 	<string name="cadastro_msg_realizado_sucesso">Cadastro realizado com sucesso.</string>
 	
+	<!--  ABAS -->
+	<string name="title_myplaces">My Places</string>
 </resources>
