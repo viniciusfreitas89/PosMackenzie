@@ -1,14 +1,11 @@
 package br.mackenzie.myplaces;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.view.Window;
-import br.com.mackenzie.admv.R;
+import br.mackenzie.myplaces.R;
 import br.mackenzie.myplaces.business.UsuarioBusiness;
 import br.mackenzie.myplaces.utils.AndroidUtils;
 import br.mackenzie.myplaces.vo.UsuarioVO;
@@ -21,26 +18,26 @@ import br.mackenzie.myplaces.xml.XMLReader;
  */
 public class MainActivity extends Activity {
 	public static String pathXml = null;
-	private ConnectivityManager conManager;
+//	private ConnectivityManager conManager;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.conManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        setContentView(R.layout.loading);
+//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        this.conManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        setContentView(R.layout.login_layout);
         
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         
-        if (!AndroidUtils.isConectadoNaInternet(conManager)){
-        	AndroidUtils.showMessageDialog(this, this.getString(R.string.mensagem_sem_conexao_internet), true);
-        }else{
+//        if (!AndroidUtils.isConectadoNaInternet(conManager)){
+//        	AndroidUtils.showMessageDialog(this, this.getString(R.string.mensagem_sem_conexao_internet), true);
+//        }else{
 	        pathXml = AndroidUtils.getDataDir(this)+"/"+UsuarioVO.class.getSimpleName()+".xml";
 	        
 	        TaskCheckLogin task = new TaskCheckLogin();
 	        task.execute();
-        }
+//        }
     }
     
     private boolean isAutenticado(){

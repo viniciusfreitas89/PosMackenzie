@@ -4,14 +4,14 @@ package br.mackenzie.myplaces.Exception;
  * @author Vinicius
  *
  */
-public class LoginException extends Exception {
+public class UsuarioException extends Exception {
 	private static final long serialVersionUID = -1030896081995078440L;
-	public LoginException(){
+	public UsuarioException(){
 	}
-	public LoginException(String msg) {
+	public UsuarioException(String msg) {
 		super(msg);
 	}
-	public LoginException(String msg, Throwable ex) {
+	public UsuarioException(String msg, Throwable ex) {
 		super(msg, ex);
 	}
 }

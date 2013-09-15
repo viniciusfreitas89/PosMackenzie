@@ -1,6 +1,6 @@
 package br.mackenzie.myplaces;
 
-import br.com.mackenzie.admv.R;
+import br.mackenzie.myplaces.R;
 import android.app.Activity;
 import android.os.Bundle;
 

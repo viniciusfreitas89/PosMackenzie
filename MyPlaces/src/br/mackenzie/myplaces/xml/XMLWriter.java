@@ -19,7 +19,6 @@ public class XMLWriter<T> {
 	public boolean writeFile(T object, String path){
 		try {
 			XStream xstream = new XStream(new DomDriver("ISO-8859-1"));
-			
 			xstream.alias(this.type.getSimpleName(), this.type);
 			
 			if (path != null){
