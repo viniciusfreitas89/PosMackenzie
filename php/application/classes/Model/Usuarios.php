@@ -50,7 +50,7 @@ class Model_Usuarios extends ORM {
                         FROM
                             checkin ck
                         INNER JOIN
-                            locais l ON l.id - ck.id_local
+                            locais l ON l.id = ck.id_local
                         WHERE
                             id_usuario = {$id_usuario}
                     )
@@ -63,14 +63,14 @@ class Model_Usuarios extends ORM {
                         FROM
                             checkin ck
                         INNER JOIN
-                            locais l ON l.id - ck.id_local
+                            locais l ON l.id = ck.id_local
                         WHERE
                             id_usuario IN(SELECT id_amigo FROM usuario_amigos WHERE id_usuario = {$id_usuario})
                     )
                 ) U
                 ORDER BY U.data_registro DESC
                 ;";
-                            
+        
         return DB::query(Database::SELECT, $sql)->execute();
     }
 }

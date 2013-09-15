@@ -72,7 +72,7 @@ class Controller_Usuarios extends Controller {
         if($this->request->method() == 'POST'){
             $mdCheckin = new Model_Checkin();
             $ret       = $mdCheckin->efetuarCheckin(array(
-                "id_usuario"    => $this->request->post("id"),
+                "id_usuario"    => $this->request->post("id_usuario"),
                 "id_local"      => $this->request->post("id_local"),
                 "valor_gasto"   => $this->request->post("valor_gasto"),
             ));
@@ -91,7 +91,7 @@ class Controller_Usuarios extends Controller {
         
         if($this->request->method() == 'POST'){
             $mdUsuarios = new Model_Usuarios();
-            $rs         = $mdUsuarios->carregarTimeLine($this->request->post("id"));
+            $rs         = $mdUsuarios->carregarTimeLine((int)$this->request->post("id_usuario"));
             
             if($rs->count() <= 0){
                 $ret->msg = "Nenhum checkin encontrado";
@@ -100,11 +100,15 @@ class Controller_Usuarios extends Controller {
                 
                 foreach ($rs as $row){
                     $arrRet[] = array(
-                        "local"         => $row->local,
-                        "valor_gasto"   => $row->valor_gasto,
-                        "data_registro" => $row->data_registro
+                        "local"         => $row['local'],
+                        "valor_gasto"   => $row['valor_gasto'],
+                        "data_registro" => $row['data_registro']
                     );
                 }
+                
+                $ret->status    = true;
+                $ret->msg       = "Timeline carregada com sucesso!";
+                $ret->timeline  = $arrRet;
             }
         }else{
             $ret->msg = "Requisição post não encontrada";

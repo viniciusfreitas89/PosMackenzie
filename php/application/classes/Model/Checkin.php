@@ -5,7 +5,7 @@ class Model_Checkin extends ORM {
 
     public function efetuarCheckin($arrDados){
         $this->id_usuario      = $arrDados['id_usuario'];
-        $this->id_local        = $arrDados['id_usuario'];
+        $this->id_local        = $arrDados['id_local'];
         $this->valor_gasto     = $arrDados['valor_gasto'];
         $this->data_registro   = date("Y-m-d H:i:s");
         
