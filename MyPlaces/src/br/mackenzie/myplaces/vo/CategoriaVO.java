@@ -8,8 +8,7 @@ package br.mackenzie.myplaces.vo;
 public class CategoriaVO {
 	private long id;
 	private String nome;
-	private String descricao;
-	
+	private String icone;
 	
 	public long getId() {
 		return id;
@@ -23,10 +22,10 @@ public class CategoriaVO {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getDescricao() {
-		return descricao;
+	public String getIcone() {
+		return icone;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setIcone(String icone) {
+		this.icone = icone;
 	}
 }
