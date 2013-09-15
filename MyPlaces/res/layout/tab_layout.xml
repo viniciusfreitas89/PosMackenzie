@@ -3,12 +3,32 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:orientation="vertical"
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
-  
-     <TextView android:text="header"
-  			android:padding="15dp"
-  			android:layout_width="fill_parent"
-  			android:layout_height="wrap_content"/>
+  android:layout_height="fill_parent"
+  android:background="#CCCCCC" >
+
+    <!-- HEADER -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#55BBFF"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:padding="10dp"
+            android:text="@string/title_myplaces"
+            android:textColor="#FFFFFF" />
+
+    
+    </RelativeLayout>
+
+    <!-- HEADER -->
+     
      
 <TabHost
     android:id="@android:id/tabhost"
@@ -19,13 +39,13 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:padding="5dp">
+        android:padding="0dp">
 
         <FrameLayout
             android:id="@android:id/tabcontent"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
+            android:padding="0dp"
             android:layout_weight="1"/>
 
         <TabWidget
@@ -34,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:layout_marginBottom="-4dp"
-            android:background="#0000FF" />
+            android:background="#FFFFFF" />
 
     </LinearLayout>
 

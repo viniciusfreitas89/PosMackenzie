@@ -35,4 +35,15 @@
 	<string name="cadastro_msg_senha_nao_confere">As senhas não conferem. Por favor, digite novamente.</string>
 	<string name="cadastro_msg_realizado_sucesso">Cadastro realizado com sucesso.</string>
 	
+	<!--  ABAS -->
+	<string name="title_myplaces">My Places</string>
+	<!-- ABAS CHECKIN -->
+	<string name="checkin_cadastro_local">Cadastre um nome para este local</string>
+	<string name="checkin_gasto_local">Informe o valor gasto neste lugar</string>
+	<string name="checkin_button_fazer">Fazer checkin</string>
+	<!-- FEED CHEKINS -->
+	<string name="feedcheckin_title">Últimos check-ins</string>
+	
+	
+	
 </resources>
