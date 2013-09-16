@@ -45,7 +45,7 @@ class Controller_Locais extends Controller {
             
             foreach($rs as $row){
                 $arrRet[] = array(
-                    "id"            => $row->id,
+                    "id_local"      => $row->id,
                     "nome"          => $row->nome,
                     "num_checkins"  => $row->num_checkins,
                     "categoria" => array(
