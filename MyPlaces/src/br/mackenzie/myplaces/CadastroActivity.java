@@ -6,6 +6,7 @@ import br.mackenzie.myplaces.business.UsuarioBusiness;
 import br.mackenzie.myplaces.utils.AndroidUtils;
 import br.mackenzie.myplaces.utils.Criptografia;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -48,6 +49,9 @@ public class CadastroActivity extends Activity {
 	private void inicializarEventos() {
 		Button btnLogin = (Button) findViewById(R.id.btn_criar_conta);
 		btnLogin.setOnClickListener(new ButtonCadastrarListener(this));
+		
+		Button btnVoltar = (Button) findViewById(R.id.bnt_voltar);
+		btnVoltar.setOnClickListener(new ButtonVoltarListener(this));
 	}
 	
 	private class ButtonCadastrarListener implements View.OnClickListener{
@@ -79,6 +83,22 @@ public class CadastroActivity extends Activity {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+	}
+	
+	private class ButtonVoltarListener implements View.OnClickListener{
+		private Activity activity;
+		
+		public ButtonVoltarListener(Activity activity){
+			this.activity = activity;
+		}
+		
+		@Override
+		public void onClick(View arg0) {
+			Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+			
+			startActivity(intent);
 		}
 	}
 }
