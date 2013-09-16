@@ -44,6 +44,9 @@
 	<!-- FEED CHEKINS -->
 	<string name="feedcheckin_title">Últimos check-ins</string>
 	
-	
-	
+	<!--  CHECKIN -->
+	<string name="checkin_msg_valor_obritorio">O campo valor deve ser preenchido.</string>
+	<string name="checkin_msg_selecionar_local">Selecione ou cadastre um local.</string>
+	<string name="checkin_msg_sucesso">Check-in realizado com sucesso.</string>
+	<string name="checkin_msg_falha">O Check-in não poude ser realizado.</string>
 </resources>

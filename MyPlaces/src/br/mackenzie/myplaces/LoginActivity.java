@@ -5,10 +5,10 @@ import br.mackenzie.myplaces.Exception.LoginException;
 import br.mackenzie.myplaces.business.UsuarioBusiness;
 import br.mackenzie.myplaces.utils.AndroidUtils;
 import br.mackenzie.myplaces.utils.Criptografia;
+import br.mackenzie.myplaces.vo.UsuarioVO;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -28,9 +28,6 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.login_layout);
-        
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
         
         inicializarElementos();
         inicializarEventos();
@@ -64,8 +61,16 @@ public class LoginActivity extends Activity {
 			UsuarioBusiness bsn = new UsuarioBusiness();
 			
 			try {
-				bsn.fazerLogin(email, senha);
-				AndroidUtils.showMessageDialog(activity, "Autenticação OK", false);
+				UsuarioVO vo = bsn.fazerLogin(email, senha);
+				
+				Bundle b = new Bundle();
+				b.putInt("idUsuario", vo.getId());
+				
+				Intent intent = new Intent(getApplicationContext(), TabLayoutActivity.class);
+				intent.putExtras(b);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				
+				startActivity(intent);
 			} catch (LoginException e) {
 				AndroidUtils.showMessageDialog(activity, activity.getString(R.string.login_mensagem_erro_atenticacao), false);
 			} catch (Exception e) {

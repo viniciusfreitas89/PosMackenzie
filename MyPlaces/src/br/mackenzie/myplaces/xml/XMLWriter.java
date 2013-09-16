@@ -12,7 +12,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 public class XMLWriter<T> {
 	private Class<?> type;
 	
-	public XMLWriter(Class<?> type) { 
+	public XMLWriter(Class<T> type) { 
 		this.type = type;
 	}
 	

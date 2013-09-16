@@ -72,7 +72,7 @@ public class CadastroActivity extends Activity {
 			UsuarioBusiness bsn = new UsuarioBusiness();
 			
 			try {
-				bsn.cadastrar(nome, email, senha, cSenha);
+				bsn.inserir(nome, email, senha, cSenha);
 				AndroidUtils.showMessageDialog(activity, activity.getString(R.string.cadastro_msg_realizado_sucesso), false);
 			} catch (UsuarioException e) {
 				AndroidUtils.showMessageDialog(activity, e.getMessage(), false);

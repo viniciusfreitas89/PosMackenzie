@@ -9,7 +9,7 @@ import org.apache.http.message.BasicNameValuePair;
 
 import com.mpcbsolutions.mackenzie.vo.StatusVO;
 
-import br.mackenzie.myplaces.utils.Constants;
+import br.mackenzie.myplaces.utils.URLs;
 import br.mackenzie.myplaces.utils.JSONUtils;
 import br.mackenzie.myplaces.utils.Utils;
 import br.mackenzie.myplaces.utils.WebUtils;
@@ -26,7 +26,7 @@ public class UsuarioDAO {
 		params.add(new BasicNameValuePair("email", email));
 		params.add(new BasicNameValuePair("senha", senha));
 		
-		InputStream response = WebUtils.requestByPost(Constants.SERVICES_URL_LOGIN, params);
+		InputStream response = WebUtils.requestByPost(URLs.SERVICES_URL_LOGIN, params);
 		String json = Utils.inputStreamToString(response);
 		
 		JSONUtils<StatusVO> jUtil = new JSONUtils<StatusVO>(StatusVO.class);
@@ -42,7 +42,7 @@ public class UsuarioDAO {
 		params.add(new BasicNameValuePair("senha", senha));
 		params.add(new BasicNameValuePair("c_senha", c_senha));
 		
-		InputStream response = WebUtils.requestByPost(Constants.SERVICES_URL_CADASTRO_USUARIO, params);
+		InputStream response = WebUtils.requestByPost(URLs.SERVICES_URL_CADASTRO_USUARIO, params);
 		String json = Utils.inputStreamToString(response);
 		
 		JSONUtils<StatusVO> jUtil = new JSONUtils<StatusVO>(StatusVO.class);

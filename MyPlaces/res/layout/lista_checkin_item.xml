@@ -9,6 +9,16 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <!-- NOME LOCAL LABEL -->
+        <TextView
+            android:id="@+id/idLocal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#43bd00"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:paddingTop="6dip"
+            android:paddingBottom="2dip" />
 		<!-- NOME LOCAL LABEL -->
         <TextView
             android:id="@+id/nome_local"
@@ -21,10 +31,10 @@
             android:paddingBottom="2dip" />
 		<!-- ENDEREÇO LOCAL LABEL -->
         <TextView
-            android:id="@+id/endereco_local"
+            android:id="@+id/valor_gasto"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="#acacac"
+            android:textColor="#000000"
             android:paddingBottom="2dip">
         </TextView>
         <!-- CATEGORIA LOCAL LABEL -->
@@ -32,7 +42,7 @@
             android:id="@+id/categoria_local"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="#acacac"
+            android:textColor="#000000"
             android:paddingBottom="2dip">
         </TextView>        
     </LinearLayout>

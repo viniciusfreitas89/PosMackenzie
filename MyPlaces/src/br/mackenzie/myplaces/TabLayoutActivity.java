@@ -8,18 +8,29 @@ import android.widget.TabHost.TabSpec;
 import br.mackenzie.myplaces.R;
 
 public class TabLayoutActivity  extends TabActivity {
+	private Integer idUsuario;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tab_layout);
         
+        Bundle bundle = this.getIntent().getExtras(); 
+	    if (bundle!=null){
+	    	this.idUsuario = bundle.getInt("idUsuario");
+	    }
+	    Bundle b = new Bundle();
+		b.putInt("idUsuario", idUsuario);
+		
+		
         TabHost tabHost = getTabHost();
         
         // Tab for Friends Feed
-        TabSpec friendspec = tabHost.newTabSpec("Amigos");
-        friendspec.setIndicator("Amigos", getResources().getDrawable(R.drawable.icon_friends_tab));
+        TabSpec friendspec = tabHost.newTabSpec("Timeline");
+        friendspec.setIndicator("Timeline", getResources().getDrawable(R.drawable.icon_friends_tab));
         Intent photosIntent = new Intent(this, FeedCheckinActivity.class);
+        photosIntent.putExtras(b);
         friendspec.setContent(photosIntent);
         
         // Tab for Checkin
@@ -27,6 +38,7 @@ public class TabLayoutActivity  extends TabActivity {
         // setting Title and Icon for the Tab
         checkinspec.setIndicator("Checkin", getResources().getDrawable(R.drawable.icon_checkin_tab));
         Intent songsIntent = new Intent(this, CheckinActivity.class);
+        songsIntent.putExtras(b);
         checkinspec.setContent(songsIntent);
         
         // Tab for Profile

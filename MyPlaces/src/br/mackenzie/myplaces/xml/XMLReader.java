@@ -9,15 +9,17 @@ import com.thoughtworks.xstream.mapper.MapperWrapper;
 public class XMLReader<T> {
 	private Class<?> type;
 	
-	public XMLReader(Class<?> type) { 
+	public XMLReader(Class<T> type) { 
 		this.type = type;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public T readFile(String path){
 		XStream xstream = new XStream(new DomDriver("ISO-8859-1")) {
 						  @Override
 						  protected MapperWrapper wrapMapper(MapperWrapper next) {
 						    return new MapperWrapper(next) {
+						      @SuppressWarnings("rawtypes")
 						      @Override
 						      public boolean shouldSerializeMember(Class definedIn,
 						              String fieldName) {

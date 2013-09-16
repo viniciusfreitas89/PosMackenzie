@@ -19,7 +19,7 @@ public class UsuarioBusiness {
 		}
 	}
 	
-	public boolean cadastrar(String nome, String email, String senha, String c_senha) throws UsuarioException, Exception{
+	public boolean inserir(String nome, String email, String senha, String c_senha) throws UsuarioException, Exception{
 		UsuarioDAO dao = new UsuarioDAO();
 		StatusVO result = dao.cadastrar(nome, email, senha, c_senha);
 		
