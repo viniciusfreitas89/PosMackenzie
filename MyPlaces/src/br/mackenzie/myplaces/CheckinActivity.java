@@ -61,7 +61,7 @@ public class CheckinActivity  extends Activity {
     	try {
 			List<LocalVO> lugares = bus.listarTodos();
 			if (lugares!=null){
-				final AdapterLocais adapter = new AdapterLocais(this.getApplicationContext(), lugares);
+				final AdapterLocais adapter = new AdapterLocais(this.getApplicationContext(), lugares, false);
 				listView.setAdapter(adapter);
 			}
 		} catch (Exception e) {
