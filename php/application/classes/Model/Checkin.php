@@ -11,6 +11,14 @@ class Model_Checkin extends ORM {
         
         $this->save();
         
+        $mdLocais = new Model_Locais();
+        $mdLocais->where("id", "=", $arrDados['id_local'])->find();
+        
+        if($mdLocais->loaded()){
+            $mdLocais->num_checkins = $mdLocais->num_checkins+1;
+            $mdLocais->update();
+        }
+        
         $ret            = new stdClass();
         $ret->status    = true;
         $ret->msg       = "Checkin efetuado com Sucesso!";

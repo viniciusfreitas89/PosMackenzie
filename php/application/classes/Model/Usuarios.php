@@ -45,12 +45,20 @@ class Model_Usuarios extends ORM {
                     (
                         SELECT 
                             l.nome as 'local',
+                            l.id as 'id_local',
+                            l.num_checkins,
+                            l.latitude,
+                            l.longitude,
+                            l.id_categoria,
                             ck.data_registro,
-                            ck.valor_gasto
+                            ck.valor_gasto,
+                            c.nome as 'categoria'
                         FROM
                             checkin ck
                         INNER JOIN
                             locais l ON l.id = ck.id_local
+                        INNER JOIN
+                            categorias c ON c.id = l.id_categoria
                         WHERE
                             id_usuario = {$id_usuario}
                     )
@@ -58,12 +66,20 @@ class Model_Usuarios extends ORM {
                     (
                         SELECT 
                             l.nome as 'local',
+                            l.id as 'id_local',
+                            l.num_checkins,
+                            l.latitude,
+                            l.longitude,
+                            l.id_categoria,
                             ck.data_registro,
-                            ck.valor_gasto
+                            ck.valor_gasto,
+                            c.nome as 'categoria'
                         FROM
                             checkin ck
                         INNER JOIN
                             locais l ON l.id = ck.id_local
+                        INNER JOIN
+                            categorias c ON c.id = l.id_categoria
                         WHERE
                             id_usuario IN(SELECT id_amigo FROM usuario_amigos WHERE id_usuario = {$id_usuario})
                     )

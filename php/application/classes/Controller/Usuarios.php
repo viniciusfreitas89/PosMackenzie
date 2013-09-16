@@ -100,9 +100,17 @@ class Controller_Usuarios extends Controller {
                 
                 foreach ($rs as $row){
                     $arrRet[] = array(
+                        "id_local"      => $row['id_local'],
                         "local"         => $row['local'],
+                        "num_checkins"  => $row['num_checkins'],
+                        "latitude"      => $row['latitude'],
+                        "longitude"     => $row['longitude'],
                         "valor_gasto"   => $row['valor_gasto'],
-                        "data_registro" => $row['data_registro']
+                        "data_registro" => $row['data_registro'],
+                        "categoria"     => array(
+                            "id"    => $row['id_categoria'],
+                            "nome"  => $row['categoria'],
+                        )
                     );
                 }
                 

@@ -25,4 +25,41 @@ class Controller_Locais extends Controller {
         
         echo json_encode($ret);
     }
+    
+    public function action_listar(){
+        $this->_auto_render = false;
+        
+        $ret            = new stdClass();
+        $ret->status    = false;
+        
+        $mdLocais   = new Model_Locais();
+        $rs         = $mdLocais->select(array("categorias.nome", "categoria"))
+                               ->order_by("nome")
+                               ->join("categorias")->on("categorias.id", "=", "locais.id_categoria")
+                               ->find_all();
+        
+        if($rs->count() <= 0){
+            $ret->msg = "Nenhum local encontrado";
+        }else{
+            $arrRet = array();
+            
+            foreach($rs as $row){
+                $arrRet[] = array(
+                    "id"            => $row->id,
+                    "nome"          => $row->nome,
+                    "num_checkins"  => $row->num_checkins,
+                    "categoria" => array(
+                        "id"    => $row->id_categoria,
+                        "nome"  => $row->categoria
+                    )
+                );
+            }
+            
+            $ret->status    = true;
+            $ret->msg       = "Locais listados com sucesso!";
+            $ret->locais    = $arrRet;
+        }
+        
+        echo json_encode($ret);
+    }
 }

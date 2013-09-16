@@ -23,6 +23,7 @@ class Model_Locais extends ORM {
             
             $ret->status    = true;
             $ret->msg       = "Local cadastrado com Sucesso!";
+            $ret->id_local  = $this->id;
         }
         
         return $ret;
