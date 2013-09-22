@@ -56,6 +56,10 @@
         <!--  Feed Checkin Activity -->
         <activity android:name="FeedCheckinActivity" />
         
+        <!--  Cadastro novo local Checkin Activity -->
+        <activity android:name="CheckinCadastroActivity" />
+        
+        
     </application>
     
     

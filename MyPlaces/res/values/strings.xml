@@ -41,6 +41,7 @@
 	<string name="checkin_cadastro_local">Cadastre um nome para este local</string>
 	<string name="checkin_gasto_local">Informe o valor gasto neste lugar</string>
 	<string name="checkin_button_fazer">Fazer checkin</string>
+	<string name="checkin_button_cadastrar">Cadastrar um novo local</string>
 	<!-- FEED CHEKINS -->
 	<string name="feedcheckin_title">Últimos check-ins</string>
 	
@@ -49,4 +50,7 @@
 	<string name="checkin_msg_selecionar_local">Selecione ou cadastre um local.</string>
 	<string name="checkin_msg_sucesso">Check-in realizado com sucesso.</string>
 	<string name="checkin_msg_falha">O Check-in não poude ser realizado.</string>
+	<string name="checkin_seleccione_categoria">Seleione uma categoria.</string>
+	<string name="checkin_lbl_voltar">Voltar</string>
+	
 </resources>

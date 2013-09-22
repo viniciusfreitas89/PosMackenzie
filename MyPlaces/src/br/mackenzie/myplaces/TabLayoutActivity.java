@@ -3,6 +3,7 @@ package br.mackenzie.myplaces;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import br.mackenzie.myplaces.R;
@@ -14,6 +15,7 @@ public class TabLayoutActivity  extends TabActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.tab_layout);
         
         Bundle bundle = this.getIntent().getExtras(); 
