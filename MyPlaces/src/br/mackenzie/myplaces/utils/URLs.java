@@ -8,9 +8,10 @@ public class URLs {
 	public 	static final String SERVICES_URL_CADASTRO_USUARIO		= SERVICES_URL+"usuarios/cadastrar";
 	public 	static final String SERVICE_URL_CHECKIN					= SERVICES_URL+"usuarios/efetuarCheckin";
 	public 	static final String SERVICE_URL_CARREGAR_TIMELINE		= SERVICES_URL+"usuarios/carregarTimeLine";
+	public 	static final String SERVICE_URL_BUSCAR_USUARIOS			= SERVICES_URL+"usuarios/buscarUsuario";
 	
 	public 	static final String SERVICES_URL_CADASTRO_LOCAL			= SERVICES_URL+"locais/cadastrarLocal";
-	public 	static final String SERVICES_URL_LISTAR_TODOS			= SERVICES_URL+"locais/listar";
+	public 	static final String SERVICES_URL_LISTAR_LOCAIS			= SERVICES_URL+"locais/listar";
 	
 	public 	static final String SERVICES_URL_LISTAR_CATEGORIAS		= SERVICES_URL+"categorias/listar";
 }

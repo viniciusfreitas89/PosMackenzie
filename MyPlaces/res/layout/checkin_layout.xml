@@ -1,88 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="fill_parent"
 	android:orientation="vertical">
 
-<LinearLayout
-  
-  android:orientation="vertical"
-  android:layout_width="fill_parent"
-  android:layout_height="wrap_content">
-  
-  <!-- CADASTRO NOVO LUGAR -->
-  <LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="#686868"
-    android:padding="10dp" >
- 
-  	  <TextView android:text="@string/checkin_cadastro_local"
-  			android:layout_width="fill_parent"
-  			android:layout_height="wrap_content"
-  			android:textColor="#CCCCCC" />
-  	  <EditText
-          android:id="@+id/txtNomeLocal"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"          
-          android:ems="10" >
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical" >
 
-          <requestFocus />
-      </EditText>
-      
-  </LinearLayout>
-  <!-- CADASTRO NOVO LUGAR -->
-  			
-      <!-- LISTA DE LUGAR -->
-      <LinearLayout
-    	android:layout_width="fill_parent"
-    	android:layout_height="fill_parent"
-    	android:orientation="vertical"
-    	android:background="#FFFFFF" >
+	    <!-- CADASTRO NOVO LUGAR -->
 
-          <ListView
-              android:id="@+id/listaLocais"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent" >
-          </ListView>
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:background="#686868"
+	        android:orientation="vertical"
+	        android:padding="10dp" >
+	        
+	        <Button
+	            android:id="@+id/btnCadastrarLocal"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/checkin_button_cadastrar" />
+	        
+			<!--  
+	        <TextView
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/checkin_cadastro_local"
+	            android:textColor="#CCCCCC" />
 
-      </LinearLayout>  
-  	  <!-- LISTA DE LUGAR -->
+	        <EditText
+	            android:id="@+id/txtNomeLocal"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:ems="10" />
+	        -->
+	        
+	    </LinearLayout>
 
-  <!-- VALOR GASTO E BOTÃO CHECKIN -->
-  
-  <LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_gravity="bottom"
-    android:background="#CCCCCC"
-    android:padding="10dp"
-    android:layout_marginBottom="-4dp" >
+	    <ScrollView
+	        android:layout_width="fill_parent"
+	        android:layout_height="249dp"
+	        android:layout_weight="0.82"
+	        android:background="#FFFFFF"
+	        android:orientation="vertical" >
 
-  <TextView android:text="@string/checkin_gasto_local"
-  			android:layout_width="fill_parent"
-  			android:layout_height="wrap_content"/>  	
-  	
-  	<EditText
-  	    android:id="@+id/txtValorGasto"
-  	    android:layout_width="fill_parent"
-  	    android:layout_height="wrap_content"
-  	    android:ems="10"
-  	    android:inputType="numberDecimal" />
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="620dp"
+	            android:background="#FFFFFF"
+	            android:orientation="vertical" >
 
-  	<Button
-  	    android:id="@+id/btnCadastrar"
-  	    android:layout_width="fill_parent"
-  	    android:layout_height="wrap_content"
-  	    android:text="@string/checkin_button_fazer" />
+	            <ListView
+	                android:id="@+id/listaLocais"
+	                android:layout_width="match_parent"
+	                android:layout_height="617dp" >
+	            </ListView>
+	        </LinearLayout>
+	    </ScrollView>
+	    <!-- CADASTRO NOVO LUGAR -->
 
-  </LinearLayout>
-  <!-- VALOR GASTO E BOTÃO CHECKIN -->
-  			
+
+	    <!-- LISTA DE LUGAR -->
+	    <!-- LISTA DE LUGAR -->
+
+
+	    <!-- VALOR GASTO E BOTÃO CHECKIN -->
+	    <!-- VALOR GASTO E BOTÃO CHECKIN -->
+
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="-4dp"
+	        android:background="#CCCCCC"
+	        android:orientation="vertical"
+	        android:padding="10dp" >
+
+	        <TextView
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/checkin_gasto_local" />
+
+	        <EditText
+	            android:id="@+id/txtValorGasto"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:ems="10"
+	            android:inputType="numberDecimal" />
+
+	        <Button
+	            android:id="@+id/btnCheckin"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/checkin_button_fazer" />
+	    </LinearLayout>
+	</LinearLayout>
+
 </LinearLayout>
-</ScrollView>
 

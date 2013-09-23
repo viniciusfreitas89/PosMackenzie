@@ -56,6 +56,16 @@
         <!--  Feed Checkin Activity -->
         <activity android:name="FeedCheckinActivity" />
         
+        <!--  Cadastro novo local Checkin Activity -->
+        <activity android:name="CheckinCadastroActivity" />
+        
+        <!--  Busca por usuários Activity -->
+        <activity android:name="SearchFriendsActivity" />
+        
+        
+        
+        
+        
     </application>
     
     

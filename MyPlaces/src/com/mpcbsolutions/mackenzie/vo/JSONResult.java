@@ -12,11 +12,12 @@ import br.mackenzie.myplaces.vo.UsuarioVO;
  * @author Vinicius
  * 
  */
-public class StatusVO {
+public class JSONResult {
 	private boolean status;
 	private String msg;
 	private Integer id_local;
 	private UsuarioVO usuario;
+	private List<UsuarioVO> usuarios;
 	private List<CategoriaVO> categorias;
 	private List<LocalVO> timeline;
 	private List<LocalVO> locais;
@@ -44,6 +45,12 @@ public class StatusVO {
 	}
 	public void setUsuario(UsuarioVO usuario) {
 		this.usuario = usuario;
+	}
+	public List<UsuarioVO> getUsuarios() {
+		return usuarios;
+	}
+	public void setUsuarios(List<UsuarioVO> usuarios) {
+		this.usuarios = usuarios;
 	}
 	public List<CategoriaVO> getCategorias() {
 		return categorias;

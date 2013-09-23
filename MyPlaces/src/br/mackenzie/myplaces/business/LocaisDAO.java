@@ -7,7 +7,7 @@ import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
-import com.mpcbsolutions.mackenzie.vo.StatusVO;
+import com.mpcbsolutions.mackenzie.vo.JSONResult;
 
 import br.mackenzie.myplaces.utils.URLs;
 import br.mackenzie.myplaces.utils.JSONUtils;
@@ -21,7 +21,7 @@ import br.mackenzie.myplaces.utils.WebUtils;
 public class LocaisDAO {
 	protected LocaisDAO(){}
 	
-	public StatusVO cadastrar(String nome, double latitude, double longitude, int idCategoria) throws Exception{
+	public JSONResult cadastrar(String nome, double latitude, double longitude, int idCategoria) throws Exception{
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("nome", nome));
 		params.add(new BasicNameValuePair("latitude", String.valueOf(latitude)));
@@ -31,14 +31,14 @@ public class LocaisDAO {
 		InputStream response = WebUtils.requestByPost(URLs.SERVICES_URL_CADASTRO_LOCAL, params);
 		String json = Utils.inputStreamToString(response);
 		
-		JSONUtils<StatusVO> jUtil = new JSONUtils<StatusVO>(StatusVO.class);
-		StatusVO status = jUtil.translate(json);
+		JSONUtils<JSONResult> jUtil = new JSONUtils<JSONResult>(JSONResult.class);
+		JSONResult status = jUtil.translate(json);
 		
 		return status;
 	}
 	
 
-	public StatusVO fazerCheckin(int idUsuario, int idLocal, float valorGasto) throws Exception{
+	public JSONResult fazerCheckin(int idUsuario, int idLocal, float valorGasto) throws Exception{
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("id_usuario", String.valueOf(idUsuario)));
 		params.add(new BasicNameValuePair("id_local", String.valueOf(idLocal)));
@@ -47,23 +47,28 @@ public class LocaisDAO {
 		InputStream response = WebUtils.requestByPost(URLs.SERVICE_URL_CHECKIN, params);
 		String json = Utils.inputStreamToString(response);
 		
-		JSONUtils<StatusVO> jUtil = new JSONUtils<StatusVO>(StatusVO.class);
-		StatusVO status = jUtil.translate(json);
+		JSONUtils<JSONResult> jUtil = new JSONUtils<JSONResult>(JSONResult.class);
+		JSONResult status = jUtil.translate(json);
 		
 		return status;
 	}
 	
-	public StatusVO listarTodos() throws Exception{
-		InputStream response = WebUtils.requestByPost(URLs.SERVICES_URL_LISTAR_TODOS, null);
+	public JSONResult listarLocais(int maxResults, double latitude, double longitude) throws Exception{
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("numero_max_resultados", String.valueOf(maxResults)));
+		params.add(new BasicNameValuePair("latitude", String.valueOf(latitude)));
+		params.add(new BasicNameValuePair("longitude", String.valueOf(longitude)));
+		
+		InputStream response = WebUtils.requestByPost(URLs.SERVICES_URL_LISTAR_LOCAIS, params);
 		String json = Utils.inputStreamToString(response);
 		
-		JSONUtils<StatusVO> jUtil = new JSONUtils<StatusVO>(StatusVO.class);
-		StatusVO status = jUtil.translate(json);
+		JSONUtils<JSONResult> jUtil = new JSONUtils<JSONResult>(JSONResult.class);
+		JSONResult status = jUtil.translate(json);
 		
 		return status;
 	}
 	
-	public StatusVO listarPorUsuario(int idUsuario) throws Exception{
+	public JSONResult listarPorUsuario(int idUsuario) throws Exception{
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("id_usuario", String.valueOf(idUsuario)));
 		
@@ -72,8 +77,8 @@ public class LocaisDAO {
 		System.out.println("json: "+idUsuario+json);
 		
 		
-		JSONUtils<StatusVO> jUtil = new JSONUtils<StatusVO>(StatusVO.class);
-		StatusVO status = jUtil.translate(json);
+		JSONUtils<JSONResult> jUtil = new JSONUtils<JSONResult>(JSONResult.class);
+		JSONResult status = jUtil.translate(json);
 		
 		return status;
 	}

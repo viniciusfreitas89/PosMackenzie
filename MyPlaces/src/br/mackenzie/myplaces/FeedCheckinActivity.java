@@ -43,7 +43,7 @@ public class FeedCheckinActivity extends Activity {
     	try {
 			List<LocalVO> lugares = bus.listarPorUsuario(idUsuario);
 			if (lugares!=null){
-				final AdapterLocais adapter = new AdapterLocais(this.getApplicationContext(), lugares);
+				final AdapterLocais adapter = new AdapterLocais(this.getApplicationContext(), lugares, true);
 				listView.setAdapter(adapter);
 			}
 		} catch (Exception e) {

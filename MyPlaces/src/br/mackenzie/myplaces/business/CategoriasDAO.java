@@ -2,7 +2,7 @@ package br.mackenzie.myplaces.business;
 
 import java.io.InputStream;
 
-import com.mpcbsolutions.mackenzie.vo.StatusVO;
+import com.mpcbsolutions.mackenzie.vo.JSONResult;
 
 import br.mackenzie.myplaces.utils.URLs;
 import br.mackenzie.myplaces.utils.JSONUtils;
@@ -12,12 +12,12 @@ import br.mackenzie.myplaces.utils.WebUtils;
 public class CategoriasDAO {
 	protected CategoriasDAO(){}
 	
-	public StatusVO listar() throws Exception{
+	public JSONResult listar() throws Exception{
 		InputStream response = WebUtils.requestByPost(URLs.SERVICES_URL_LISTAR_CATEGORIAS, null);
 		String json = Utils.inputStreamToString(response);
 		
-		JSONUtils<StatusVO> jUtil = new JSONUtils<StatusVO>(StatusVO.class);
-		StatusVO status = jUtil.translate(json);
+		JSONUtils<JSONResult> jUtil = new JSONUtils<JSONResult>(JSONResult.class);
+		JSONResult status = jUtil.translate(json);
 		
 		return status;
 	}

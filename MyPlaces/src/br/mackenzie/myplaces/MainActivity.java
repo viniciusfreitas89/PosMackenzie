@@ -23,7 +23,8 @@ import br.mackenzie.myplaces.xml.XMLReader;
  *
  */
 public class MainActivity extends Activity {
-	public static String pathXml = null;
+	private String pathXml = null;
+	private int idUsuario;
 //	private ConnectivityManager conManager;
 	
     @Override
@@ -54,13 +55,7 @@ public class MainActivity extends Activity {
 			return false;
 		}
 		
-		UsuarioBusiness bsn = new UsuarioBusiness();
-		try {
-			bsn.fazerLogin(user.getEmail(), user.getSenha());
-		} catch (Exception e) {
-			return false;
-		}
-    	
+		idUsuario = user.getId();
     	return true;
     }
     
@@ -73,6 +68,15 @@ public class MainActivity extends Activity {
 	    	if (!isAutenticado()){
 		    	Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
 	        	startActivity(intent);
+	    	}else{
+	    		Bundle b = new Bundle();
+				b.putInt("idUsuario", idUsuario);
+				
+				Intent intent = new Intent(getApplicationContext(), TabLayoutActivity.class);
+				intent.putExtras(b);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				
+				startActivity(intent);
 	    	}
 			return null;
 		} 

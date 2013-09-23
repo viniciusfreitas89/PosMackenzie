@@ -6,6 +6,7 @@ import br.mackenzie.myplaces.business.UsuarioBusiness;
 import br.mackenzie.myplaces.utils.AndroidUtils;
 import br.mackenzie.myplaces.utils.Criptografia;
 import br.mackenzie.myplaces.vo.UsuarioVO;
+import br.mackenzie.myplaces.xml.XMLWriter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -62,6 +63,7 @@ public class LoginActivity extends Activity {
 			
 			try {
 				UsuarioVO vo = bsn.fazerLogin(email, senha);
+				salvarDados(vo);
 				
 				Bundle b = new Bundle();
 				b.putInt("idUsuario", vo.getId());
@@ -77,6 +79,11 @@ public class LoginActivity extends Activity {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	private void salvarDados(UsuarioVO vo){
+		XMLWriter<UsuarioVO> writer = new XMLWriter<UsuarioVO>(UsuarioVO.class);
+		writer.writeFile(vo, AndroidUtils.getDataDir(this)+"/"+UsuarioVO.class.getSimpleName()+".xml");
 	}
 	
 	private class ButtonCadastroListener implements View.OnClickListener{

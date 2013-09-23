@@ -1,12 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent">
-  
-  <TextView android:text="Perfil usuário"
-  			android:padding="15dp"
-  			android:layout_width="fill_parent"
-  			android:layout_height="wrap_content"/>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">    
+
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical" >
+
+	    <!-- DATA PARA O RLATÓRIO -->
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:background="#CFCFCF"
+	        android:orientation="vertical"
+	        android:padding="5dp" >
+
+	        <TextView
+	            android:id="@+id/textView1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Seleione uma data inicial"
+	            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	        <TextView
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:text="string/profile_data_inicio"
+	            android:textColor="#CCCCCC" />
+	        <TextView
+			    android:id="@+id/inicioDisplayDate" 
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:textColor="#00CD00"
+			    android:text="A data  será exibida após selecionar"
+			    android:textAppearance="?android:attr/textAppearanceMedium" />
+	        
+	        <TextView
+	            android:id="@+id/textView2"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Seleione uma data final"
+	            android:textAppearance="?android:attr/textAppearanceMedium" />	        	        
+			
+			<TextView
+			    android:id="@+id/fimDisplayDate" 
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:textColor="#00CD00"
+			    android:text="Date will appear here after being selected"
+			    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+			<Button
+			    android:id="@+id/button1"
+			    style="?android:attr/buttonStyleSmall"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:text="Visualizar Chekins" />
+	            
+	    </LinearLayout>
+        <!-- DATA PARA O RLATÓRIO -->
+        <!-- LISTA DE CKEKINS RLATÓRIO -->        
+	    <ScrollView
+	        android:layout_width="fill_parent"
+	        android:layout_height="249dp"
+	        android:layout_weight="0.82"
+	        android:background="#FFFFFF"
+	        android:orientation="vertical" >
+
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="620dp"
+	            android:background="#FFFFFF"
+	            android:orientation="vertical" >
+
+	            <ListView
+	                android:id="@+id/list_relatorio"
+	                android:layout_width="match_parent"
+	                android:layout_height="617dp" >
+	            </ListView>
+	        </LinearLayout>
+	    </ScrollView>
+	    <!-- LISTA DE CKEKINS RLATÓRIO --> 
+
+
+	    
+
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="-4dp"
+	        android:background="#33CC00"
+	        android:orientation="vertical"
+	        android:padding="10dp" >
+
+	        <!-- ROADAPE -->
+	        
+	    </LinearLayout>
+	</LinearLayout>
+
 </LinearLayout>

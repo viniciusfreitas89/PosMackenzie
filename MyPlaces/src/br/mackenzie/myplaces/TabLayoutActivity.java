@@ -3,17 +3,22 @@ package br.mackenzie.myplaces;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import br.mackenzie.myplaces.R;
 
 public class TabLayoutActivity  extends TabActivity {
+	private ImageView btnSearch;
 	private Integer idUsuario;
 	
-    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.tab_layout);
         
         Bundle bundle = this.getIntent().getExtras(); 
@@ -51,5 +56,35 @@ public class TabLayoutActivity  extends TabActivity {
         tabHost.addTab(friendspec); // Adding friends tab
         tabHost.addTab(checkinspec); // Adding checkin tab
         tabHost.addTab(profilespec); // Adding profile tab
+        
+        addEvents();
     }
+    
+    
+    private void addEvents(){
+    	btnSearch = (ImageView) findViewById(R.id.imgSearch);
+    	btnSearch.setOnClickListener(new ButtonSearchListener());
+    }
+    
+    private class ButtonSearchListener implements View.OnClickListener{
+		public ButtonSearchListener(){
+		}
+		
+		@Override
+		public void onClick(View arg0) {
+			Intent intent = new Intent(getApplicationContext(), SearchFriendsActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			
+			startActivity(intent);
+		}
+	}
+    
+    @Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+			android.os.Process.killProcess(android.os.Process.myPid());
+	        return true;
+	    }
+	    return super.onKeyDown(keyCode, event);
+	}
 }

@@ -8,17 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 import br.mackenzie.myplaces.R;
 import br.mackenzie.myplaces.vo.LocalVO;
 
 public class AdapterLocais extends BaseAdapter {
-	
 	private LayoutInflater mInflater;
 	private List<LocalVO> itens; 
+	private boolean showValorGasto;
 	
-	public AdapterLocais(Context context, List<LocalVO> itens) { 
+	public AdapterLocais(Context context, List<LocalVO> itens, boolean showValorGasto) { 
 		this.itens = itens; 
+		this.showValorGasto = showValorGasto;
 		mInflater = LayoutInflater.from(context);
 	}
 
@@ -59,19 +61,19 @@ public class AdapterLocais extends BaseAdapter {
 		} 
 		
 		LocalVO item = itens.get(position);
-		String valor = "0,00";
-		if (item.getValor_gasto()!=null){
-			valor = f.format(item.getValor_gasto());
-		}
-		if (item.getId_local()!=null){
-			itemHolder.idLocal.setText(item.getId_local().toString());
-		}else{
-			//TODO: Remover esse ELSE
-			itemHolder.idLocal.setText("1");
+		if (showValorGasto){
+			String valor = "0,00";
+			if (item.getValor_gasto()!=null){
+				valor = f.format(item.getValor_gasto());
+			}
+			
+			itemHolder.valor.setText("R$ "+valor);
 		}
 		
+		if (item.getId_local()!=null){
+			itemHolder.idLocal.setText(item.getId_local().toString());
+		}
 		itemHolder.local.setText(item.getLocal()); 
-		itemHolder.valor.setText("R$ "+valor);
 		itemHolder.categoria.setText(item.getCategoria().getNome());
 		
 		return view;

@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.TabActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,9 +22,11 @@ import br.mackenzie.myplaces.utils.AndroidUtils;
 import br.mackenzie.myplaces.vo.LocalVO;
 
 public class CheckinActivity  extends Activity {
+	private static final int ACT_LOCAL_CADASTRO = 1;  // The request code
 	private ListView listView;
-	private TextView txtNomeLocal;
 	private TextView txtGasto;
+	private Button btnCadastrarLocal;
+	private Button btnCheckin;
 	
 	private Localizacao localizacao;
 	private int 	idUsuario;
@@ -44,8 +47,10 @@ public class CheckinActivity  extends Activity {
 		listView = (ListView) findViewById(R.id.listaLocais);
 		listView.setOnItemClickListener(new ListViewListener(this));
 		
-		txtNomeLocal = (TextView) this.findViewById(R.id.txtNomeLocal);
 		txtGasto = (TextView) this.findViewById(R.id.txtValorGasto);
+		
+		btnCheckin = (Button) findViewById(R.id.btnCheckin);
+		btnCadastrarLocal = (Button) findViewById(R.id.btnCadastrarLocal);
     }
 	
 	private void carregarValores(){
@@ -59,9 +64,11 @@ public class CheckinActivity  extends Activity {
     	LocaisBusiness bus = new LocaisBusiness();
     	
     	try {
-			List<LocalVO> lugares = bus.listarTodos();
+			List<LocalVO> lugares = bus.listarTodos(20, 
+													localizacao.getMinhaLocalizacao().getLatitude(), 
+													localizacao.getMinhaLocalizacao().getLongitude());
 			if (lugares!=null){
-				final AdapterLocais adapter = new AdapterLocais(this.getApplicationContext(), lugares);
+				final AdapterLocais adapter = new AdapterLocais(this.getApplicationContext(), lugares, false);
 				listView.setAdapter(adapter);
 			}
 		} catch (Exception e) {
@@ -70,8 +77,8 @@ public class CheckinActivity  extends Activity {
     }
 	 
 	private void inicializarEventos() {
-		Button btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
-		btnCadastrar.setOnClickListener(new ButtonCadastroListener(this));
+		btnCheckin.setOnClickListener(new ButtonCheckinListener(this));
+		btnCadastrarLocal.setOnClickListener(new ButtonCadastroLocalListener(this));
 	}
 	 
 	private void visualizarCheckins(){
@@ -82,18 +89,38 @@ public class CheckinActivity  extends Activity {
 		}
 	}
 	
-	private class ButtonCadastroListener implements View.OnClickListener{
+	//Listener para o Click da lista
+    private class ListViewListener implements OnItemClickListener{
 		private Activity activity;
 		
-		public ButtonCadastroListener(Activity activity){
+		public ListViewListener(Activity activity){
 			this.activity = activity;
 		}
 		
 		@Override
-		public void onClick(View arg0) {
-			String nome = txtNomeLocal.getText().toString();
-			String valor = txtGasto.getText().toString();
+		public void onItemClick(final AdapterView<?> listView, View view, final int posicao,
+				long arg3) {
+			String id = ((TextView)listView.getChildAt(posicao-listView.getFirstVisiblePosition()).findViewById(R.id.idLocal)).getText().toString();
+			String nome = ((TextView)listView.getChildAt(posicao-listView.getFirstVisiblePosition()).findViewById(R.id.nome_local)).getText().toString();
 			
+			if (id!=null && !id.isEmpty()){
+				idLocal = Integer.parseInt(id);
+				AndroidUtils.showMessage(activity.getApplicationContext(), "'"+nome+"' Selecionado.");
+			}
+		}
+	}
+    
+    private class ButtonCheckinListener implements View.OnClickListener{
+		private Activity activity;
+
+		public ButtonCheckinListener(Activity activity){
+			this.activity = activity;
+		}
+
+		@Override
+		public void onClick(View arg0) {
+			String valor = txtGasto.getText().toString();
+
 			if (valor.isEmpty()){
 				AndroidUtils.showMessageDialog(activity, activity.getString(R.string.checkin_msg_valor_obritorio), false);
 				return;
@@ -105,19 +132,13 @@ public class CheckinActivity  extends Activity {
 			}else{
 				vlr = Float.valueOf(valor);
 			}
-			
+
 			LocaisBusiness bsn = new LocaisBusiness();
 			try {
-				if (!nome.isEmpty()){
-					idLocal = bsn.inserir(nome, 
-									  localizacao.getMinhaLocalizacao().getLatitude(), 
-									  localizacao.getMinhaLocalizacao().getLongitude(), 
-									  1);
-				}
-				
 				if (idLocal!=null){
 					if (bsn.checkin(idUsuario, idLocal, vlr)){
-						AndroidUtils.showMessageDialog(activity, activity.getString(R.string.checkin_msg_sucesso), false);
+						AndroidUtils.showMessage(activity.getApplicationContext(), activity.getString(R.string.checkin_msg_sucesso));
+						
 						visualizarCheckins();
 					}else{
 						AndroidUtils.showMessageDialog(activity, activity.getString(R.string.checkin_msg_falha), false);
@@ -134,23 +155,36 @@ public class CheckinActivity  extends Activity {
 			}
 		}
 	}
-	
-	//Listener para o Click da lista
-    private class ListViewListener implements OnItemClickListener{
+    
+    private class ButtonCadastroLocalListener implements View.OnClickListener{
 		private Activity activity;
 		
-		public ListViewListener(Activity activity){
+		public ButtonCadastroLocalListener(Activity activity){
 			this.activity = activity;
 		}
 		
 		@Override
-		public void onItemClick(final AdapterView<?> listView, View view, final int posicao,
-				long arg3) {
-			String id = ((TextView)listView.getChildAt(posicao-listView.getFirstVisiblePosition()).findViewById(R.id.idLocal)).getText().toString();
+		public void onClick(View arg0) {
+			Bundle b = new Bundle();
+			b.putInt("idUsuario", idUsuario);
 			
-			if (id!=null && !id.isEmpty()){
-				idLocal = Integer.parseInt(id);
-			}
+			Intent intent = new Intent(getApplicationContext(), CheckinCadastroActivity.class);
+			intent.putExtras(b);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			
+			startActivityForResult(intent, ACT_LOCAL_CADASTRO);
 		}
 	}
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case ACT_LOCAL_CADASTRO:
+            	visualizarCheckins();
+                break;
+            default:
+                super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+    
 }
