@@ -3,10 +3,14 @@ package br.mackenzie.myplaces;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
+=======
+import android.view.Window;
+>>>>>>> d7f6953322704f321a19ed8a3ba536dbd45381c0
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import br.mackenzie.myplaces.R;

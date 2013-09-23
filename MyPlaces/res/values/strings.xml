@@ -55,7 +55,10 @@
 	<string name="checkin_seleccione_categoria">Seleione uma categoria.</string>
 	<string name="checkin_lbl_voltar">Voltar</string>
 	
+<<<<<<< HEAD
 	<!--  USUARIO -->
 	<string name="user_busca_filtro_vazio">Por favor, informe uma palavra chave.</string>
 	
+=======
+>>>>>>> d7f6953322704f321a19ed8a3ba536dbd45381c0
 </resources>

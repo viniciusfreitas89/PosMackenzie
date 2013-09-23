@@ -25,7 +25,11 @@
             android:textColor="#FFFFFF" />
 
         <ImageButton
+<<<<<<< HEAD
             android:id="@+id/imgSearch"
+=======
+            android:id="@+id/imageButton1"
+>>>>>>> d7f6953322704f321a19ed8a3ba536dbd45381c0
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
