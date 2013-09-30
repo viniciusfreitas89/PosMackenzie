@@ -14,6 +14,7 @@ public class LocalVO {
 	private Double longitude;
 	private Double valor_gasto;
 	private CategoriaVO categoria;
+	private UsuarioVO usuario;
 	
 	public Integer getId_local() {
 		return id_local;
@@ -62,5 +63,11 @@ public class LocalVO {
 	}
 	public void setCategoria(CategoriaVO categoria) {
 		this.categoria = categoria;
+	}
+	public UsuarioVO getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(UsuarioVO usuario) {
+		this.usuario = usuario;
 	}
 }

@@ -51,6 +51,10 @@ public class AdapterLocais extends BaseAdapter {
 			
 			((TextView) view.findViewById(R.id.idLocal)).setVisibility(View.GONE);
 			itemHolder.idLocal = ((TextView) view.findViewById(R.id.idLocal));
+			itemHolder.nomeUsuario = ((TextView) view.findViewById(R.id.nome_usuario)); 
+			if (!showValorGasto){
+				((TextView) view.findViewById(R.id.nome_usuario)).setVisibility(View.GONE);
+			}
 			itemHolder.local = ((TextView) view.findViewById(R.id.nome_local)); 
 			itemHolder.valor = ((TextView) view.findViewById(R.id.valor_gasto)); 
 			itemHolder.categoria = ((TextView) view.findViewById(R.id.categoria_local));
@@ -73,6 +77,9 @@ public class AdapterLocais extends BaseAdapter {
 		if (item.getId_local()!=null){
 			itemHolder.idLocal.setText(item.getId_local().toString());
 		}
+		if (item.getUsuario()!=null){
+			itemHolder.nomeUsuario.setText(item.getUsuario().getNome());
+		}
 		itemHolder.local.setText(item.getLocal()); 
 		itemHolder.categoria.setText(item.getCategoria().getNome());
 		
@@ -80,7 +87,8 @@ public class AdapterLocais extends BaseAdapter {
 	}
 
 	private class ItemSuporte { 
-		TextView idLocal; 
+		TextView idLocal;
+		TextView nomeUsuario;
 		TextView local; 
     	TextView valor; 
     	TextView categoria; 
