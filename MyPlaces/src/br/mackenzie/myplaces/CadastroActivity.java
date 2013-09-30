@@ -5,6 +5,8 @@ import br.mackenzie.myplaces.Exception.UsuarioException;
 import br.mackenzie.myplaces.business.UsuarioBusiness;
 import br.mackenzie.myplaces.utils.AndroidUtils;
 import br.mackenzie.myplaces.utils.Criptografia;
+import br.mackenzie.myplaces.vo.UsuarioVO;
+import br.mackenzie.myplaces.xml.XMLWriter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -78,12 +80,29 @@ public class CadastroActivity extends Activity {
 			try {
 				bsn.inserir(nome, email, senha, cSenha);
 				AndroidUtils.showMessageDialog(activity, activity.getString(R.string.cadastro_msg_realizado_sucesso), false);
+				
+				UsuarioVO vo = bsn.fazerLogin(email, senha);
+				salvarDados(vo);
+				
+				Bundle b = new Bundle();
+				b.putInt("idUsuario", vo.getId());
+				
+				Intent intent = new Intent(getApplicationContext(), TabLayoutActivity.class);
+				intent.putExtras(b);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				
+				startActivity(intent);
 			} catch (UsuarioException e) {
 				AndroidUtils.showMessageDialog(activity, e.getMessage(), false);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	private void salvarDados(UsuarioVO vo){
+		XMLWriter<UsuarioVO> writer = new XMLWriter<UsuarioVO>(UsuarioVO.class);
+		writer.writeFile(vo, AndroidUtils.getDataDir(this)+"/"+UsuarioVO.class.getSimpleName()+".xml");
 	}
 	
 	private class ButtonVoltarListener implements View.OnClickListener{
