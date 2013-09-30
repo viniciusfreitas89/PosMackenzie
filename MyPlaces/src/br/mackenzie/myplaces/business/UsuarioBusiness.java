@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.mackenzie.myplaces.Exception.LoginException;
 import br.mackenzie.myplaces.Exception.UsuarioException;
+import br.mackenzie.myplaces.vo.SolicitacoesVO;
 import br.mackenzie.myplaces.vo.UsuarioVO;
 
 import com.mpcbsolutions.mackenzie.vo.JSONResult;
@@ -38,6 +39,42 @@ public class UsuarioBusiness {
 		
 		if (result.isStatus()){
 			return result.getUsuarios();
+		}else{
+			throw new UsuarioException(result.getMsg());
+		}
+	}
+	
+	public List<UsuarioVO> listarAmigos(int idUsuario) throws Exception{
+		UsuarioDAO dao = new UsuarioDAO();
+		JSONResult result = dao.listarAmigos(idUsuario);
+		
+		if (result.isStatus()){
+			return result.getUsuarios();
+		}else{
+			throw new UsuarioException(result.getMsg());
+		}
+	}
+	
+	public boolean adicionar(int idUsuario, int idAmigo) throws Exception{
+		UsuarioDAO dao = new UsuarioDAO();
+		JSONResult result = dao.adicionar(idUsuario, idAmigo);
+		
+		return result.isStatus();
+	}
+	
+	public boolean alterarSolicitacao(int idSolicitacao, String statusSolicitacao) throws Exception{
+		UsuarioDAO dao = new UsuarioDAO();
+		JSONResult result = dao.alterarSolicitacao(idSolicitacao, statusSolicitacao);
+		
+		return result.isStatus();
+	}
+	
+	public List<SolicitacoesVO> listarSolicitacoes(int idUsuario) throws Exception{
+		UsuarioDAO dao = new UsuarioDAO();
+		JSONResult result = dao.listarSolicitacoes(idUsuario);
+		
+		if (result.isStatus()){
+			return result.getSolicitacoes();
 		}else{
 			throw new UsuarioException(result.getMsg());
 		}

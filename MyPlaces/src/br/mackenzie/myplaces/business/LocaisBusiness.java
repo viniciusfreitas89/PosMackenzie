@@ -36,6 +36,6 @@ public class LocaisBusiness {
 		LocaisDAO dao = new LocaisDAO();
 		JSONResult status = dao.listarPorUsuario(idUsuario);
 		
-		return status.getTimeline();
+		return status.getLocais();
 	}
 }

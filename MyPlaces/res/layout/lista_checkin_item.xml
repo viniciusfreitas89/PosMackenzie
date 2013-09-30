@@ -2,49 +2,61 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal" >
     
-    <!-- MONTA UM ITEM -->
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="40dip"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:src="@drawable/ic_launcher" />
+
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <!-- NOME LOCAL LABEL -->
+        android:orientation="vertical" >
+
         <TextView
             android:id="@+id/idLocal"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#43bd00"
+            android:padding="0dp"
+            android:textColor="#000"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:paddingTop="6dip"
-            android:paddingBottom="2dip" />
-		<!-- NOME LOCAL LABEL -->
+            android:layout_gravity="left"
+            android:text="aasasa sa" />
+
         <TextView
             android:id="@+id/nome_local"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#43bd00"
+            android:padding="2dp"
+            android:textColor="#000"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:paddingTop="6dip"
-            android:paddingBottom="2dip" />
-		<!-- ENDEREÇO LOCAL LABEL -->
+            android:layout_gravity="left"
+            android:text="aasasa sa"
+            android:textStyle="bold"/>
+
         <TextView
             android:id="@+id/valor_gasto"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:paddingBottom="2dip">
-        </TextView>
-        <!-- CATEGORIA LOCAL LABEL -->
+            android:padding="0dp"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:layout_gravity="left"
+            android:text="aasasa sa" />
+        
         <TextView
             android:id="@+id/categoria_local"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:paddingBottom="2dip">
-        </TextView>        
+            android:padding="0dp"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:layout_gravity="left"
+            android:text="aasasa sa" />
+
     </LinearLayout>
-    <!-- MONTA UM ITEM -->
+
 </LinearLayout>

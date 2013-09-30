@@ -3,19 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-  <TextView android:text="@string/feedcheckin_title"
-  			android:padding="15dp"
-  			android:layout_width="fill_parent"
-  			android:layout_height="wrap_content"/>
   
   <!-- Main ListView 
 		 Always give id value as list(@android:id/list)
 	-->
-     <ListView android:id="@+id/listCheckin"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:dividerHeight="1dip">
+
+    <ListView
+        android:id="@+id/listCheckin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:divider="#55BBFF"
+        android:background="#fff"
+        android:dividerHeight="2dip" >
     </ListView>
     
 </LinearLayout>

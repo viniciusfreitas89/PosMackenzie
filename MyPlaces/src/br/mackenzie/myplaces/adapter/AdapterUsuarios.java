@@ -1,24 +1,30 @@
 package br.mackenzie.myplaces.adapter;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
-import android.content.Context;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 import br.mackenzie.myplaces.R;
+import br.mackenzie.myplaces.business.UsuarioBusiness;
+import br.mackenzie.myplaces.utils.AndroidUtils;
 import br.mackenzie.myplaces.vo.UsuarioVO;
 
 public class AdapterUsuarios extends BaseAdapter {
 	private LayoutInflater mInflater;
 	private List<UsuarioVO> items; 
+	private int idUsuario;
+	private Activity activity;
 	
-	public AdapterUsuarios(Context context, List<UsuarioVO> items) { 
+	public AdapterUsuarios(Activity activity, List<UsuarioVO> items, int idUsuario) { 
 		this.items = items; 
-		mInflater = LayoutInflater.from(context);
+		mInflater = LayoutInflater.from(activity.getApplicationContext());
+		this.idUsuario = idUsuario;
+		this.activity = activity;
 	}
 
 	@Override
@@ -46,7 +52,8 @@ public class AdapterUsuarios extends BaseAdapter {
 			
 			((TextView) view.findViewById(R.id.id)).setVisibility(View.GONE);
 			itemHolder.id = ((TextView) view.findViewById(R.id.id));
-			itemHolder.nome = ((TextView) view.findViewById(R.id.nome)); 
+			itemHolder.nome = ((TextView) view.findViewById(R.id.nome));
+			itemHolder.btnAdicionar = ((Button) view.findViewById(R.id.btnAdicionar));
 			
 			view.setTag(itemHolder); 
 		} else { 
@@ -57,6 +64,7 @@ public class AdapterUsuarios extends BaseAdapter {
 		
 		itemHolder.id.setText(String.valueOf(item.getId_usuario())); 
 		itemHolder.nome.setText(item.getNome());
+		itemHolder.btnAdicionar.setOnClickListener(new ButtonAdicionarListener(item.getId_usuario()));
 		
 		return view;
 	}
@@ -64,5 +72,33 @@ public class AdapterUsuarios extends BaseAdapter {
 	private class ItemSuporte { 
 		TextView id; 
 		TextView nome; 
+		Button btnAdicionar;
     }
+	
+	private class ButtonAdicionarListener implements View.OnClickListener{
+		private int idAmigo;
+		
+		public ButtonAdicionarListener(int idUsuario){
+			this.idAmigo = idUsuario;
+		}
+		
+		@Override
+		public void onClick(View arg0) {
+			final UsuarioBusiness business = new UsuarioBusiness();
+			
+        	boolean status;
+			try {
+				status = business.adicionar(idUsuario, idAmigo);
+			
+				if (!status){
+					AndroidUtils.showMessageDialog(activity, activity.getString(R.string.user_solicitar_amizade_falha), false);
+				}else{
+					AndroidUtils.showMessageDialog(activity, activity.getString(R.string.user_solicitar_amizade_sucesso), false);
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

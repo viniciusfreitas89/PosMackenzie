@@ -3,7 +3,9 @@ package com.mpcbsolutions.mackenzie.vo;
 import java.util.List;
 
 import br.mackenzie.myplaces.vo.CategoriaVO;
+import br.mackenzie.myplaces.vo.GastoVO;
 import br.mackenzie.myplaces.vo.LocalVO;
+import br.mackenzie.myplaces.vo.SolicitacoesVO;
 import br.mackenzie.myplaces.vo.UsuarioVO;
 
 /**
@@ -19,8 +21,9 @@ public class JSONResult {
 	private UsuarioVO usuario;
 	private List<UsuarioVO> usuarios;
 	private List<CategoriaVO> categorias;
-	private List<LocalVO> timeline;
 	private List<LocalVO> locais;
+	private List<GastoVO> gastos;
+	private List<SolicitacoesVO> solicitacoes;
 	
 	public boolean isStatus() {
 		return status;
@@ -58,16 +61,22 @@ public class JSONResult {
 	public void setCategorias(List<CategoriaVO> categorias) {
 		this.categorias = categorias;
 	}
-	public List<LocalVO> getTimeline() {
-		return timeline;
-	}
-	public void setTimeline(List<LocalVO> timeline) {
-		this.timeline = timeline;
-	}
 	public List<LocalVO> getLocais() {
 		return locais;
 	}
 	public void setLocais(List<LocalVO> locais) {
 		this.locais = locais;
+	}
+	public List<GastoVO> getGastos() {
+		return gastos;
+	}
+	public void setGastos(List<GastoVO> gastos) {
+		this.gastos = gastos;
+	}
+	public List<SolicitacoesVO> getSolicitacoes() {
+		return solicitacoes;
+	}
+	public void setSolicitacoes(List<SolicitacoesVO> solicitacoes) {
+		this.solicitacoes = solicitacoes;
 	}
 }

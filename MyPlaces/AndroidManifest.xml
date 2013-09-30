@@ -44,6 +44,19 @@
             android:noHistory="true"
             android:label="@string/app_name"/>
         
+        
+        <!--  Amigos Activity -->
+        <activity
+            android:name="AmigosActivity"
+            android:noHistory="true"
+            android:label="@string/app_name"/>
+        
+        <!--  Solicitacoes Activity -->
+        <activity
+            android:name="SolicitacoesActivity"
+            android:noHistory="true"
+            android:label="@string/app_name"/>
+        
         <!--  ABAS Activity -->
         <activity android:name="TabLayoutActivity" />
             

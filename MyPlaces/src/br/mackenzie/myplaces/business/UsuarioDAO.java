@@ -63,4 +63,58 @@ public class UsuarioDAO {
 		
 		return status;
 	}
+	
+	public JSONResult listarAmigos(int idUsuario) throws Exception{
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("id_usuario", String.valueOf(idUsuario)));
+		
+		InputStream response = WebUtils.requestByPost(URLs.SERVICE_URL_LISTAR_AMIGOS, params);
+		String json = Utils.inputStreamToString(response);
+		
+		JSONUtils<JSONResult> jUtil = new JSONUtils<JSONResult>(JSONResult.class);
+		JSONResult status = jUtil.translate(json);
+		
+		return status;
+	}
+	
+	public JSONResult adicionar(int idUsuario, int idAmigo) throws Exception{
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("id_usuario", String.valueOf(idUsuario)));
+		params.add(new BasicNameValuePair("id_amigo", String.valueOf(idAmigo)));
+		
+		InputStream response = WebUtils.requestByPost(URLs.SERVICE_URL_ADICIONAR_AMIGO, params);
+		String json = Utils.inputStreamToString(response);
+		
+		JSONUtils<JSONResult> jUtil = new JSONUtils<JSONResult>(JSONResult.class);
+		JSONResult status = jUtil.translate(json);
+		
+		return status;
+	}
+	
+	public JSONResult alterarSolicitacao(int idSolicitacao, String statusSolicitacao) throws Exception{
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("id_solicitacao", String.valueOf(idSolicitacao)));
+		params.add(new BasicNameValuePair("status", statusSolicitacao));
+		
+		InputStream response = WebUtils.requestByPost(URLs.SERVICE_URL_ALTERAR_SOLICITACAO, params);
+		String json = Utils.inputStreamToString(response);
+		
+		JSONUtils<JSONResult> jUtil = new JSONUtils<JSONResult>(JSONResult.class);
+		JSONResult status = jUtil.translate(json);
+		
+		return status;
+	}
+	
+	public JSONResult listarSolicitacoes(int idUsuario) throws Exception{
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("id_usuario", String.valueOf(idUsuario)));
+		
+		InputStream response = WebUtils.requestByPost(URLs.SERVICE_URL_LISTAR_SOLICITACOES, params);
+		String json = Utils.inputStreamToString(response);
+		
+		JSONUtils<JSONResult> jUtil = new JSONUtils<JSONResult>(JSONResult.class);
+		JSONResult status = jUtil.translate(json);
+		
+		return status;
+	}
 }
