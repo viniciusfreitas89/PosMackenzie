@@ -52,9 +52,13 @@ class Model_Usuarios extends ORM {
                             l.id_categoria,
                             ck.data_registro,
                             ck.valor_gasto,
-                            c.nome as 'categoria'
+                            c.nome as 'categoria',
+                            u.id as 'id_usuario',
+                            u.nome as 'nome_usuario'
                         FROM
                             checkin ck
+                        INNER JOIN
+                            usuario u ON u.id = ck.id_usuario
                         INNER JOIN
                             locais l ON l.id = ck.id_local
                         INNER JOIN
@@ -73,9 +77,13 @@ class Model_Usuarios extends ORM {
                             l.id_categoria,
                             ck.data_registro,
                             ck.valor_gasto,
-                            c.nome as 'categoria'
+                            c.nome as 'categoria',
+                            u.id as 'id_usuario',
+                            u.nome as 'nome_usuario'
                         FROM
                             checkin ck
+                        INNER JOIN
+                            usuario u ON u.id = ck.id_usuario
                         INNER JOIN
                             locais l ON l.id = ck.id_local
                         INNER JOIN

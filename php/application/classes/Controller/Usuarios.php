@@ -110,6 +110,10 @@ class Controller_Usuarios extends Controller {
                         "categoria"     => array(
                             "id"    => $row['id_categoria'],
                             "nome"  => $row['categoria'],
+                        ),
+                        "usuario"       => array(
+                            "id"    => $row['id_usuario'],
+                            "nome"  => $row['nome_usuario'],
                         )
                     );
                 }
