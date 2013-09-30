@@ -96,6 +96,20 @@ public abstract class DefaultActivity extends Activity{
 			}
 		});
 	    
+	    Button btnTimeline = (Button) pview.findViewById(R.id.btnTimeline);
+	    btnTimeline.setOnClickListener(new OnClickListener() {
+			public void onClick(View arg0) {
+				Bundle b = new Bundle();
+				b.putInt("idUsuario", idUsuario);
+				
+				Intent intent = new Intent(getApplicationContext(), TabLayoutActivity.class);
+				intent.putExtras(b);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				
+				startActivity(intent);
+			}
+		});
+	    
 	    Button btnLogout = (Button) pview.findViewById(R.id.btnLogout);
 	    btnLogout.setOnClickListener(new OnClickListener() {
 			public void onClick(View arg0) {

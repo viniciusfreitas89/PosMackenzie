@@ -5,6 +5,7 @@ import java.util.List;
 import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,6 +18,7 @@ import br.mackenzie.myplaces.Exception.LoginException;
 import br.mackenzie.myplaces.adapter.AdapterLocais;
 import br.mackenzie.myplaces.business.LocaisBusiness;
 import br.mackenzie.myplaces.location.Localizacao;
+import br.mackenzie.myplaces.location.gps.GPSLocation;
 import br.mackenzie.myplaces.location.network.NetworkLocation;
 import br.mackenzie.myplaces.utils.AndroidUtils;
 import br.mackenzie.myplaces.vo.LocalVO;
@@ -36,7 +38,18 @@ public class CheckinActivity  extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.checkin_layout);
         
-        localizacao = new NetworkLocation(this);
+        localizacao = new GPSLocation(this);
+        if (!localizacao.isProvedorAtivo()){
+        	localizacao = new NetworkLocation(this);
+        	if (!localizacao.isProvedorAtivo()){
+            	AndroidUtils.showMessageDialog(this, "Esse dispositvio não possui configurações necessários para consultar o local atual.\nPor favor, ative o GPS ou sua conexão com a internet.", false);
+            }else{
+            	AndroidUtils.showMessage(this, "Localização pela rede.");
+            }
+        }else{
+        	AndroidUtils.showMessage(this, "Localização por GPS");
+        }
+        
         inicializarElementos();
         carregarValores();
         carregarLugares();

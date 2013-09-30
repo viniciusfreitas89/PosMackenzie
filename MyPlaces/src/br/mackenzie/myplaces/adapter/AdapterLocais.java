@@ -1,16 +1,19 @@
 package br.mackenzie.myplaces.adapter;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 import br.mackenzie.myplaces.R;
+import br.mackenzie.myplaces.utils.Utils;
 import br.mackenzie.myplaces.vo.LocalVO;
 
 public class AdapterLocais extends BaseAdapter {
@@ -49,15 +52,19 @@ public class AdapterLocais extends BaseAdapter {
 			
 			itemHolder = new ItemSuporte();
 			
-			((TextView) view.findViewById(R.id.idLocal)).setVisibility(View.GONE);
 			itemHolder.idLocal = ((TextView) view.findViewById(R.id.idLocal));
 			itemHolder.nomeUsuario = ((TextView) view.findViewById(R.id.nome_usuario)); 
-			if (!showValorGasto){
-				((TextView) view.findViewById(R.id.nome_usuario)).setVisibility(View.GONE);
-			}
 			itemHolder.local = ((TextView) view.findViewById(R.id.nome_local)); 
 			itemHolder.valor = ((TextView) view.findViewById(R.id.valor_gasto)); 
 			itemHolder.categoria = ((TextView) view.findViewById(R.id.categoria_local));
+			
+			itemHolder.idLocal.setVisibility(View.GONE);
+			if (!showValorGasto){
+				itemHolder.local.setTypeface(null, Typeface.BOLD);
+				
+				itemHolder.nomeUsuario.setVisibility(View.GONE);
+				itemHolder.valor.setVisibility(View.GONE);
+			}
 			
 			view.setTag(itemHolder); 
 		} else { 
@@ -80,7 +87,12 @@ public class AdapterLocais extends BaseAdapter {
 		if (item.getUsuario()!=null){
 			itemHolder.nomeUsuario.setText(item.getUsuario().getNome());
 		}
-		itemHolder.local.setText(item.getLocal()); 
+		String data = "";
+		if (item.getData_registro()!=null){
+			Date date = Utils.stringToDate(item.getData_registro(), "yyyy-MM-dd HH:mm:ss");
+			data = " - " +new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(date);
+		}
+		itemHolder.local.setText(item.getLocal() + data); 
 		itemHolder.categoria.setText(item.getCategoria().getNome());
 		
 		return view;

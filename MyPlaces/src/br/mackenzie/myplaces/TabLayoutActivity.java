@@ -17,6 +17,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
@@ -155,6 +156,9 @@ public class TabLayoutActivity  extends TabActivity {
 				startActivity(intent);
 			}
 		});
+	    
+	    LinearLayout btnTimeline = (LinearLayout) pview.findViewById(R.id.lytTimeline);
+	    btnTimeline.setVisibility(View.GONE);
 	    
 	    Button btnLogout = (Button) pview.findViewById(R.id.btnLogout);
 	    btnLogout.setOnClickListener(new OnClickListener() {

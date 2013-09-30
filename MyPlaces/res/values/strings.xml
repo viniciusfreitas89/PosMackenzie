@@ -73,6 +73,7 @@
 	<!--  MENU -->
 	<string name="menu_amigos">Meus amigos</string>
 	<string name="menu_solicitacao_amigos">Solicitações de amizade</string>
+	<string name="menu_timeline">Timeline</string>
 	<string name="menu_logout">Logout</string>
 	<string name="menu_sair">Sair</string>
 	
