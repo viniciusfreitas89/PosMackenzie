@@ -302,39 +302,53 @@ class Controller_Usuarios extends Controller {
             }else{
                 $mdAmigos  = new Model_Amigos();
                 $rsAmigos  = $mdAmigos->where("id_usuario", "=", $id_usuario)
-                                      ->or_where("id_amigo", "=", $id_usuario)
                                       ->find_all();
                 
-                if($rsAmigos->count() <= 0){
-                    $ret->msg = "Nenhum amigo encontrado!";
-                }else{
+                //if($rsAmigos->count() <= 0){
+                    //$ret->msg = "Nenhum amigo encontrado!";
+                //}else{
                     $arrRet = array();
                     
                     foreach($rsAmigos as $row){
-                        $id_usuario = 0;
-                        
-                        if($row->id_usuario != $id_usuario){
-                            $id_usuario = $row->id_usuario;
-                        }else if($row->id_amigo != $id_usuario){
-                            $id_usuario = $row->id_amigo;
+                        if($row->id_amigo !== $id_usuario){
+                            $mdUsuario = new Model_Usuarios();
+                            $mdUsuario->where("id", "=", $row->id_amigo)->find();
+
+                            if($mdUsuario->loaded()){
+                                $arrRet[] = array(
+                                    "id"    => $mdUsuario->id,
+                                    "nome"  => $mdUsuario->nome,
+                                    "email" => $mdUsuario->email,
+                                );
+                            }
                         }
-                        
-                        $mdUsuario = new Model_Usuarios();
-                        $mdUsuario->where("id", "=", $id_usuario)->find();
-                        
-                        if($mdUsuario->loaded()){
-                            $arrRet[] = array(
-                                "id"    => $mdUsuario->id,
-                                "nome"  => $mdUsuario->nome,
-                                "email" => $mdUsuario->email,
-                            );
-                        }
-                        
-                        $ret->status        = true;
-                        $ret->msg           = "Amigos encontrados";
-                        $ret->usuarios      = $arrRet;
                     }
-                }
+                    
+                    $mdAmigos  = new Model_Amigos();
+                    $rsAmigos  = $mdAmigos->where("id_amigo", "=", $id_usuario)
+                                            ->find_all();
+                    
+                    if($rsAmigos->count() > 0){
+                        foreach($rsAmigos as $row){
+                            if($row->id_usuario !== $id_usuario){
+                                $mdUsuario = new Model_Usuarios();
+                                $mdUsuario->where("id", "=", $row->id_usuario)->find();
+
+                                if($mdUsuario->loaded()){
+                                    $arrRet[] = array(
+                                        "id"    => $mdUsuario->id,
+                                        "nome"  => $mdUsuario->nome,
+                                        "email" => $mdUsuario->email,
+                                    );
+                                }
+                            }
+                        }
+                    }
+                    
+                    $ret->status        = true;
+                    $ret->msg           = "Amigos encontrados";
+                    $ret->usuarios      = $arrRet;
+                //}
             }
         }else{
             $ret->msg = "Requisição post não encontrada";

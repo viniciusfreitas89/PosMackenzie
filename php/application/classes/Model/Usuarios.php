@@ -64,7 +64,7 @@ class Model_Usuarios extends ORM {
                         INNER JOIN
                             categorias c ON c.id = l.id_categoria
                         WHERE
-                            id_usuario = {$id_usuario}
+                            ck.id_usuario = {$id_usuario}
                     )
                     UNION
                     (
@@ -89,7 +89,9 @@ class Model_Usuarios extends ORM {
                         INNER JOIN
                             categorias c ON c.id = l.id_categoria
                         WHERE
-                            id_usuario IN(SELECT id_amigo FROM usuario_amigos WHERE id_usuario = {$id_usuario})
+                            ck.id_usuario IN(SELECT id_amigo FROM usuario_amigos WHERE id_usuario = {$id_usuario} OR id_amigo = {$id_usuario})
+                        OR
+                            ck.id_usuario IN(SELECT id_usuario FROM usuario_amigos WHERE id_usuario = {$id_usuario} OR id_amigo = {$id_usuario})
                     )
                 ) U
                 ORDER BY U.data_registro DESC
